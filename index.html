@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SeriousSpawns – Deine Zuschauer steuern dein Spiel</title>
+<meta name="description" content="SeriousSpawns verbindet deinen TikTok-Live mit deinem Spiel: Geschenke, Likes und Chat-Befehle lassen Gegner, Effekte und Chaos auftauchen.">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="SeriousSpawns – Gift it. Spawn it.">
+<meta property="og:description" content="Deine TikTok-Zuschauer steuern dein Spiel.">
+<meta property="og:image" content="assets/spot-poster.jpg">
+<style>
+  @font-face { font-family:Bungee; src:url(assets/bungee-latin-400-normal.ttf); font-display:swap }
+  @font-face { font-family:Chakra; src:url(assets/chakra-petch-latin-700-normal.ttf); font-display:swap }
+  :root { --bg:#0b0b10; --panel:#14141c; --line:#262634; --text:#ececf3; --mute:#9a9ab0; --red:#ff2d55; --cyan:#25f4ee; --ok:#3ddc84 }
+  * { box-sizing:border-box }
+  html { scroll-behavior:smooth }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 "Segoe UI", system-ui, -apple-system, sans-serif }
+  a { color:var(--cyan) }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 20px }
+  nav { position:sticky; top:0; z-index:10; background:rgba(11,11,16,.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line) }
+  nav .wrap { display:flex; align-items:center; gap:14px; height:62px }
+  nav img { width:36px; height:36px; border-radius:9px }
+  nav b { font-family:Bungee, sans-serif; font-weight:400; font-size:18px } nav b span { color:var(--red) }
+  nav .grow { flex:1 } nav a.l { color:var(--mute); text-decoration:none; font-size:15px } nav a.l:hover { color:var(--text) }
+  .btn { display:inline-flex; align-items:center; gap:10px; background:var(--red); color:#fff; text-decoration:none; font-weight:800; padding:14px 26px; border-radius:12px; box-shadow:0 8px 28px rgba(255,45,85,.35); transition:transform .15s }
+  .btn:hover { transform:translateY(-2px) } .btn.small { padding:9px 16px; font-size:14px; box-shadow:none }
+  .btn.ghost { background:transparent; border:1px solid var(--line); box-shadow:none; color:var(--text) }
+  header.hero { padding:70px 0 50px; background:radial-gradient(600px 400px at 15% 20%, rgba(255,45,85,.22), transparent 70%), radial-gradient(600px 400px at 90% 80%, rgba(37,244,238,.15), transparent 70%) }
+  .hero .wrap { display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center }
+  .kicker { font-family:Chakra, sans-serif; color:var(--cyan); letter-spacing:.14em; text-transform:uppercase; font-size:14px }
+  h1 { font-family:Bungee, sans-serif; font-weight:400; font-size:clamp(34px, 5.5vw, 60px); line-height:1.05; margin:10px 0 16px }
+  h1 em { font-style:normal; color:var(--red) }
+  .lead { font-size:19px; color:#cfcfe0; max-width:560px }
+  .dl { margin-top:26px; display:flex; flex-wrap:wrap; gap:12px; align-items:center }
+  .meta { color:var(--mute); font-size:14px; margin-top:12px }
+  .phone { justify-self:center; width:270px; aspect-ratio:9/16; border-radius:28px; overflow:hidden; border:6px solid #1c1c26; box-shadow:0 20px 60px rgba(0,0,0,.6), 0 0 0 1px var(--line) }
+  .phone video { width:100%; height:100%; object-fit:cover; display:block; background:#000 }
+  section { padding:60px 0 }
+  h2 { font-family:Chakra, sans-serif; font-size:30px; margin:0 0 8px } .sub { color:var(--mute); margin:0 0 28px }
+  .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px }
+  .card .ic { font-size:30px } .card h3 { margin:8px 0 6px; font-size:18px } .card p { margin:0; color:#c4c4d4; font-size:15px }
+  .games { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px }
+  .game { background:var(--panel); border:1px solid var(--line); border-radius:16px; overflow:hidden }
+  .game img { width:100%; aspect-ratio:1024/500; object-fit:cover; display:block } .game div { padding:14px 16px } .game b { font-size:17px } .game p { margin:4px 0 0; color:var(--mute); font-size:14px }
+  .mods { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px } .mods span { background:var(--panel); border:1px solid var(--line); border-radius:30px; padding:8px 16px; font-size:15px }
+  ol.steps { counter-reset:s; list-style:none; padding:0; display:grid; grid-template-columns:repeat(4, 1fr); gap:16px }
+  ol.steps li { counter-increment:s; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; position:relative }
+  ol.steps li::before { content:counter(s); font-family:Bungee, sans-serif; font-size:28px; color:var(--red); display:block; margin-bottom:6px }
+  .pro { font-family:Chakra, sans-serif; font-size:13px; vertical-align:middle; background:var(--red); color:#fff; border-radius:6px; padding:3px 8px; margin-left:6px }
+  .plans { display:grid; grid-template-columns:1fr 1fr; gap:16px } .plans ul { margin:10px 0 0; padding-left:20px; color:#c4c4d4 } .plans li { margin:5px 0 } .plans li.no { color:var(--mute) }
+  .pro-card { border-color:rgba(255,45,85,.55); box-shadow:0 0 0 1px rgba(255,45,85,.25) inset } .pro-card h3 { color:var(--red) }
+  .note { background:#1a1420; border:1px solid #4a2236; border-radius:14px; padding:16px 18px; color:#e6cfd8; font-size:15px }
+  .news { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px }
+  .news ul { margin:8px 0 0; padding-left:20px } .news li { margin:4px 0 }
+  .cta { text-align:center; padding:70px 0; background:radial-gradient(500px 260px at 50% 40%, rgba(255,45,85,.2), transparent 70%) }
+  footer { border-top:1px solid var(--line); padding:28px 0; color:var(--mute); font-size:14px }
+  footer .wrap { display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between }
+  footer a { color:var(--mute) }
+  @media (max-width:820px) {
+    .hero .wrap { grid-template-columns:1fr } .phone { width:220px }
+    .grid, .games { grid-template-columns:1fr 1fr } ol.steps { grid-template-columns:1fr 1fr } nav a.l { display:none } .plans { grid-template-columns:1fr }
+  }
+  @media (max-width:520px) { .grid, .games, ol.steps { grid-template-columns:1fr } }
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <img src="assets/logo.png" alt=""><b>Serious<span>Spawns</span></b><span class="grow"></span>
+  <a class="l" href="#features">Funktionen</a><a class="l" href="#spiele">Spiele</a><a class="l" href="#plaene">Free & Pro</a><a class="l" href="#start">So geht's</a>
+  <a class="btn small" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.3.6/SeriousSpawns-Setup-0.3.6.exe">⬇ Download</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="kicker">Für TikTok-Live-Streamer</div>
+    <h1>Deine Zuschauer <em>steuern</em> dein Spiel.</h1>
+    <p class="lead">SeriousSpawns verbindet deinen TikTok-Live mit deinem Spiel. Geschenke, Likes und Chat-Befehle lassen Gegner, Effekte und Chaos auftauchen – live, während du spielst.</p>
+    <div class="dl">
+      <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.3.6/SeriousSpawns-Setup-0.3.6.exe">⬇ Herunterladen</a>
+      <a class="btn ghost" href="#start">So geht's</a>
+    </div>
+    <div class="meta">Version 0.3.6 · Windows 10/11 (64 Bit) · 19.10.2026</div>
+  </div>
+  <div class="phone"><video src="assets/spot.mp4" poster="assets/spot-poster.jpg" autoplay muted loop playsinline></video></div>
+</div></header>
+
+<section id="features"><div class="wrap">
+  <h2>Alles drin</h2><p class="sub">Einmal einrichten – dann macht dein Chat den Rest.</p>
+  <div class="grid">
+    <div class="card"><div class="ic">🎁</div><h3>Geschenke = Gegner</h3><p>Lege fest, welches Geschenk was auslöst: Rose ein Gegner, Galaxy ein Boss, Likes und Chat-Befehle ebenso.</p></div>
+    <div class="card"><div class="ic">🏷️</div><h3>Zuschauer-Namen</h3><p>Overlay und Vorlesen zeigen, wer was geschickt hat – in Resident Evil Village sogar direkt über dem Gegner.</p></div>
+    <div class="card"><div class="ic">📺</div><h3>Overlays</h3><p>Für OBS und TikTok LIVE Studio: Trigger-Tafel, Top-Geschenk mit Bewegung, Feed, Zähler und Ziele.</p></div>
+    <div class="card"><div class="ic">🗣️</div><h3>Vorlesen & Sounds</h3><p>Chat-Nachrichten vorlesen lassen und eigene Sounds für Geschenke abspielen.</p></div>
+    <div class="card"><div class="ic">⛔</div><h3>Pause & Not-Aus</h3><p>Strg+Alt+P pausiert die Spawns, Strg+Alt+X stoppt alles – auch mitten im Spiel.</p></div>
+    <div class="card"><div class="ic">🔄</div><h3>Läuft stabil</h3><p>Verbindet sich nach Abbrüchen selbst neu und aktualisiert sich automatisch.</p></div>
+  </div>
+</div></section>
+
+<section id="spiele"><div class="wrap">
+  <h2>Eigene Spiele <span class="pro">PRO</span></h2><p class="sub">Drei Spiele sind direkt eingebaut, ganz ohne Einrichtung – mit SeriousSpawns Pro.</p>
+  <div class="games">
+    <div class="game"><img src="assets/bazillus-blast.jpg" alt="Bazillus Blast"><div><b>Bazillus Blast</b><p>Bunter Arcade-Spaß mit Bazillen-Horden.</p></div></div>
+    <div class="game"><img src="assets/multi-rush.jpg" alt="Multi Rush"><div><b>Multi Rush</b><p>4 Welten, Halloween- und Weihnachts-Modus.</p></div></div>
+    <div class="game"><img src="assets/lautlos.jpg" alt="LAUTLOS"><div><b>LAUTLOS</b><p>Ego-Horror – sie hören dich.</p></div></div>
+  </div>
+  <h2 style="margin-top:44px">Mods für PC-Spiele <span class="pro">PRO</span></h2><p class="sub">Mit einem Klick installiert – mit SeriousSpawns Pro. Nur für Story- und Einzelspieler-Modi.</p>
+  <div class="mods"><span>Resident Evil Village</span><span>GTA V (Story-Modus)</span><span>Minecraft Java (eigener Server)</span><span>weitere folgen</span></div>
+</div></section>
+
+<section id="plaene"><div class="wrap">
+  <h2>Free & Pro</h2><p class="sub">Herunterladen ist kostenlos. Spiele und Mods gibt es mit Pro.</p>
+  <div class="plans">
+    <div class="card"><h3>Free</h3><ul><li>TikTok-Verbindung, Trigger und Simulator</li><li>Overlays, Widgets und Top-Geschenk</li><li>Sounds und Vorlesen</li><li class="no">Wasserzeichen „powered by SeriousSpawns“</li><li class="no">Keine Spiele und Mods</li></ul></div>
+    <div class="card pro-card"><h3>Pro</h3><ul><li>Alles aus Free</li><li>Alle eingebauten Spiele</li><li>Alle Mods</li><li>Overlays ohne Wasserzeichen</li><li>Neue Spiele und Mods zuerst</li></ul><p style="margin-top:12px">Lizenzschlüssel gibt es vorerst direkt von SeriousZocking.</p></div>
+  </div>
+</div></section>
+
+<section id="start"><div class="wrap">
+  <h2>So geht's</h2><p class="sub">In wenigen Minuten startklar – ein Assistent führt dich durch alles.</p>
+  <ol class="steps">
+    <li><b>Herunterladen & installieren</b><br><span style="color:var(--mute)">Meldet Windows „Computer geschützt“: „Weitere Informationen“ → „Trotzdem ausführen“.</span></li>
+    <li><b>TikTok-Namen eintragen</b><br><span style="color:var(--mute)">Ohne Passwort. Verbinden klappt, sobald du live bist.</span></li>
+    <li><b>Spiel wählen</b><br><span style="color:var(--mute)">Eingebautes Spiel starten oder Mod installieren.</span></li>
+    <li><b>Overlay einbinden</b><br><span style="color:var(--mute)">Adresse kopieren, in OBS oder LIVE Studio einfügen.</span></li>
+  </ol>
+  <p class="note" style="margin-top:22px">Hinweis: SeriousSpawns ist ein unabhängiges Projekt und nicht mit TikTok verbunden. Die Live-Verbindung nutzt eine inoffizielle Schnittstelle und kann kurz ausfallen, wenn TikTok etwas ändert. Mods bitte nur offline bzw. im Story-Modus verwenden.</p>
+</div></section>
+
+<section id="neu"><div class="wrap">
+  <div class="news"><h2 style="font-size:22px">Neu in Version 0.3.6</h2><ul><li>Spiele und Mods gibt es jetzt nur mit Pro (Bazillus Blast, Multi Rush, LAUTLOS, Resident Evil Village, GTA V, Minecraft …).</li><li>Free enthält alle anderen Funktionen – TikTok-Verbindung, Trigger ohne Begrenzung, Overlays, Widgets, Top-Geschenk, Sounds und Vorlesen – mit Wasserzeichen „powered by SeriousSpawns“.</li><li>Pro-Test-Keys und Lizenzen schalten wie gewohnt alles frei, ohne Wasserzeichen.</li><li>Download-Website mit Free/Pro-Übersicht.</li></ul></div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>Gift it. Spawn it.</h2><p class="sub">Herunterladen, einrichten und im nächsten Live ausprobieren.</p>
+  <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.3.6/SeriousSpawns-Setup-0.3.6.exe">⬇ SeriousSpawns 0.3.6 herunterladen</a>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© 2026 SeriousZocking · SeriousSpawns</span>
+  <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+</div></footer>
+</body>
+</html>
