@@ -1,0 +1,11 @@
+{
+  "_hinweis": "Kleiner Werbebanner oben im Programm. Zum Vermieten nur diese Datei ändern (website/ads.json) und WEBSITE-VEROEFFENTLICHEN.bat ausführen – alle Nutzer sehen es innerhalb einer Stunde, ohne Update.",
+  "small": {
+    "logo": "https://seriousspawns.com/assets/logo.png",
+    "title": "SeriousSpawns Pro",
+    "text": "Alle Spiele · Streamer vs Streamer · ohne Wasserzeichen",
+    "cta": "Ansehen",
+    "url": "https://seriousspawns.com",
+    "color": "#ff2d55"
+  }
+}
