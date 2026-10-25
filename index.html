@@ -43,7 +43,7 @@
   .card .ic { font-size:30px } .card h3 { margin:8px 0 6px; font-size:18px } .card p { margin:0; color:#c4c4d4; font-size:15px }
   .games { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px }
   .game { background:var(--panel); border:1px solid var(--line); border-radius:16px; overflow:hidden }
-  .game img { width:100%; aspect-ratio:1024/500; object-fit:cover; display:block } .game div { padding:14px 16px } .game b { font-size:17px } .game p { margin:4px 0 0; color:var(--mute); font-size:14px }
+  .game img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block } .pro.free { background:#16c784; color:#04140c } .pro.soon { background:#25f4ee; color:#04141a } .soonh { margin:42px 0 4px; font-size:24px } .game div { padding:14px 16px } .game b { font-size:17px } .game p { margin:4px 0 0; color:var(--mute); font-size:14px }
   .mods { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px } .mods span { background:var(--panel); border:1px solid var(--line); border-radius:30px; padding:8px 16px; font-size:15px }
   ol.steps { counter-reset:s; list-style:none; padding:0; display:grid; grid-template-columns:repeat(4, 1fr); gap:16px }
   ol.steps li { counter-increment:s; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; position:relative }
@@ -104,16 +104,29 @@
 </div></section>
 
 <section id="spiele"><div class="wrap">
-  <h2>Eigene Spiele <span class="pro">PRO</span></h2><p class="sub">Alle Spiele sind direkt eingebaut, ganz ohne Einrichtung – mit SeriousSpawns Pro. Alle Spiele und Figuren sind eigene Entwicklungen.</p>
+  <h2>Eigene Spiele <span class="pro">PRO</span></h2><p class="sub">Alle Spiele sind direkt eingebaut, ganz ohne Einrichtung – mit SeriousSpawns Pro. <b>Dosenwerfen</b> und <b>Golden Feather</b> spielst du schon in der Free-Version. Alle Spiele und Figuren sind eigene Entwicklungen.</p>
   <div class="games">
-    <div class="game"><img src="assets/boxchaos.jpg" alt="Boxchaos"><div><b>Boxchaos</b><p>Bau die Box voll – deine Zuschauer werfen Blöcke, Drachen und Diamanten hinein.</p></div></div>
-    <div class="game"><img src="assets/bazillus-blast.jpg" alt="Bazillus Blast"><div><b>Bazillus Blast</b><p>Bunter Arcade-Spaß mit Bazillen-Horden.</p></div></div>
-    <div class="game"><img src="assets/multi-rush.jpg" alt="Multi Rush"><div><b>Multi Rush</b><p>4 Welten, Halloween- und Weihnachts-Modus.</p></div></div>
-    <div class="game"><img src="assets/lautlos.jpg" alt="LAUTLOS"><div><b>LAUTLOS</b><p>Ego-Horror – sie hören dich.</p></div></div>
-    <div class="game"><img src="assets/steps.jpg" alt="Steps"><div><b>Steps</b> <span class="pro">NEU</span><p>Die Treppe zur Himmelspforte – 8 Figuren, 4 Themen und die Schweine-Bombe.</p></div></div>
-    <div class="game"><img src="assets/karrrtofffel.jpg" alt="Karrrtofffel!"><div><b>Karrrtofffel!</b><p>3D-Kartoffel-Rätsel mit 25 Leveln und Zeit-Zurückspulen.</p></div></div>
+    <div class="game"><img src="assets/boxchaos.jpg" alt="Boxchaos" loading="lazy"><div><b>Boxchaos</b><p>Bau die Box voll – deine Zuschauer werfen Blöcke, Drachen und Diamanten hinein.</p></div></div>
+    <div class="game"><img src="assets/steps.jpg" alt="Steps" loading="lazy"><div><b>Steps</b><p>Die Treppe zur Himmelspforte – 8 Figuren, 4 Themen und die Schweine-Bombe.</p></div></div>
+    <div class="game"><img src="assets/balloons.jpg" alt="Balloons" loading="lazy"><div><b>Balloons</b> <span class="pro">NEU</span><p>Pump dein Haus mit Ballons bis ins Weltall – jetzt auch zu zweit mit Rammen.</p></div></div>
+    <div class="game"><img src="assets/golden-feather.jpg" alt="Golden Feather" loading="lazy"><div><b>Golden Feather</b> <span class="pro free">GRATIS</span><p>Die Nadel im Heuhaufen: Finde die eine goldene Feder unter bis zu 1.000.</p></div></div>
+    <div class="game"><img src="assets/dosenwerfen.jpg" alt="Dosenwerfen" loading="lazy"><div><b>Dosenwerfen</b> <span class="pro free">GRATIS</span><p>Jahrmarkt bei Nacht: Alle Dosen vom Podest werfen – 12 Level und Endlos-Modus.</p></div></div>
+    <div class="game"><img src="assets/karrrtofffel.jpg" alt="Karrrtofffel!" loading="lazy"><div><b>Karrrtofffel!</b><p>3D-Kartoffel-Rätsel mit 25 Leveln und Zeit-Zurückspulen.</p></div></div>
+    <div class="game"><img src="assets/bazillus-blast.jpg" alt="Bazillus Blast" loading="lazy"><div><b>Bazillus Blast</b><p>Bunter Arcade-Spaß mit Bazillen-Horden.</p></div></div>
+    <div class="game"><img src="assets/multi-rush.jpg" alt="Multi Rush" loading="lazy"><div><b>Multi Rush</b><p>4 Welten, Halloween- und Weihnachts-Modus.</p></div></div>
   </div>
-  
+  <h3 class="soonh">Demnächst</h3><p class="sub">Diese Spiele sind in Arbeit und kommen nach und nach für alle Pro-Nutzer.</p>
+  <div class="games">
+    <div class="game soon"><img src="assets/ring-rivals.jpg" alt="Ring Rivals" loading="lazy"><div><b>Ring Rivals</b> <span class="pro soon">BALD</span><p>3D-Arcade-Wrestling mit Monstern, Specials und Continues.</p></div></div>
+    <div class="game soon"><img src="assets/rampage.jpg" alt="Rampage" loading="lazy"><div><b>Rampage</b> <span class="pro soon">BALD</span><p>King of the Hill: die Mega-Rampe hoch, während LKWs herunterdonnern.</p></div></div>
+    <div class="game soon"><img src="assets/motochaos.jpg" alt="MotoChaos" loading="lazy"><div><b>MotoChaos</b> <span class="pro soon">BALD</span><p>Motorrad-Trial mit echter Physik, Trampolinen und Abwürfen.</p></div></div>
+    <div class="game soon"><img src="assets/support-spawni.jpg" alt="Support Spawni" loading="lazy"><div><b>Support Spawni</b> <span class="pro soon">BALD</span><p>3D-Jump'n'Run mit Spawni – Geschenke lassen seinen Kopf wachsen, bis er platzt.</p></div></div>
+    <div class="game soon"><img src="assets/get-coins.jpg" alt="Get Coins" loading="lazy"><div><b>Get Coins</b> <span class="pro soon">BALD</span><p>Der riesige Geldspeicher: Jede Münze ist ein TikTok-Coin.</p></div></div>
+    <div class="game soon"><img src="assets/laufsteg.jpg" alt="V.I.P." loading="lazy"><div><b>V.I.P.</b> <span class="pro soon">BALD</span><p>Über den roten Teppich zum Helikopter – Fans, Hater und Paparazzi.</p></div></div>
+    <div class="game soon"><img src="assets/print-shop.jpg" alt="Print Shop" loading="lazy"><div><b>Print Shop</b> <span class="pro soon">BALD</span><p>Drucke die echten Profilbilder deiner Zuschauer – Müll oder Verkauf?</p></div></div>
+    <div class="game soon"><img src="assets/fluch-nicht.jpg" alt="Fluch nicht" loading="lazy"><div><b>Fluch nicht</b> <span class="pro soon">BALD</span><p>Das Brettspiel-Duell auf einem riesigen Holzbrett.</p></div></div>
+    <div class="game soon"><img src="assets/pyramiden-krieg.jpg" alt="Pyramiden-Krieg" loading="lazy"><div><b>Pyramiden-Krieg</b> <span class="pro soon">BALD</span><p>Verteidige deine Pyramide – gegen die KI oder bis zu 4 Streamer.</p></div></div>
+  </div>
 </div></section>
 
 <section id="plaene"><div class="wrap">
