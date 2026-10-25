@@ -52,6 +52,7 @@
   .plans { display:grid; grid-template-columns:1fr 1fr; gap:16px } .plans ul { margin:10px 0 0; padding-left:20px; color:#c4c4d4 } .plans li { margin:5px 0 } .plans li.no { color:var(--mute) }
   .pro-card { border-color:rgba(255,45,85,.55); box-shadow:0 0 0 1px rgba(255,45,85,.25) inset } .pro-card h3 { color:var(--red) }
   .buy { margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; align-items:center } .buy .price { font-size:22px; font-weight:800; width:100% } .buy small { color:var(--mute); width:100% }
+  .buy .save { display:inline-block; background:#16c784; color:#04140c; font-weight:800; border-radius:6px; padding:1px 7px; margin-left:6px; font-size:.9em } .buy .savetxt { color:#16c784; font-weight:700 }
   .note { background:#1a1420; border:1px solid #4a2236; border-radius:14px; padding:16px 18px; color:#e6cfd8; font-size:15px }
   .news { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px }
   .news ul { margin:8px 0 0; padding-left:20px } .news li { margin:4px 0 }
@@ -70,7 +71,7 @@
 <nav><div class="wrap">
   <img src="assets/logo.png" alt=""><b>Serious<span>Spawns</span></b><span class="grow"></span>
   <a class="l" href="#features">Funktionen</a><a class="l" href="#spiele">Spiele</a><a class="l" href="#plaene">Free & Pro</a><a class="l" href="#kauf">Kauf &amp; Support</a> <a class="l" href="#start">So geht's</a>
-  <a class="btn small" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.3.22/SeriousSpawns-Setup-0.3.22.exe">⬇ Download</a>
+  <a class="btn small" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/latest">⬇ Download</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
@@ -79,10 +80,10 @@
     <h1>Deine Zuschauer <em>steuern</em> dein Spiel.</h1>
     <p class="lead">SeriousSpawns verbindet deinen TikTok-Live mit deinem Spiel. Geschenke, Likes und Chat-Befehle lassen Gegner, Effekte und Chaos auftauchen – live, während du spielst.</p>
     <div class="dl">
-      <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.3.22/SeriousSpawns-Setup-0.3.22.exe">⬇ Herunterladen</a>
+      <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/latest">⬇ Herunterladen</a>
       <a class="btn ghost" href="#start">So geht's</a>
     </div>
-    <div class="meta">Version 0.3.22 · Windows 10/11 (64 Bit) · 24.10.2026</div>
+    <div class="meta">Version 0.3.24 · Windows 10/11 (64 Bit) · 25.10.2026</div>
   </div>
   <div class="phone"><video src="assets/spot.mp4" poster="assets/spot-poster.jpg" autoplay muted loop playsinline></video></div>
 </div></header>
@@ -118,8 +119,8 @@
 <section id="plaene"><div class="wrap">
   <h2>Free & Pro</h2><p class="sub">Herunterladen und Testen ist kostenlos. Die Spiele gibt es mit Pro – monatlich kündbar.</p>
   <div class="plans">
-    <div class="card"><h3>Free</h3><ul><li>TikTok-Verbindung, Trigger und Simulator</li><li>Spawn- und Like-Overlay, Widgets</li><li>Sounds, Vorlesen und Aktionen</li><li class="no">Wasserzeichen „powered by SeriousSpawns“</li><li class="no">Keine Spiele und Pro-Overlays</li></ul></div>
-    <div class="card pro-card"><h3>Pro</h3><ul><li>Alles aus Free</li><li>Alle eingebauten Spiele</li><li>Streamer vs Streamer</li><li>Bingo, Glücksrad, Geschenkbox und Trailer-Aufnahme</li><li>Timer, Speedrun, Steine, Wasser, Flammen und Top-Geschenk</li><li>Alles ohne Wasserzeichen</li><li>Neue Spiele zuerst</li></ul><div class="buy"><span class="price">14,99 € / Monat</span><a class="btn small" href="https://seriousspawns.lemonsqueezy.com/checkout/buy/792bb68e-739e-4771-a51b-3de975c7471d?enabled=2265905">Pro-Abo holen</a><small>Monatlich kündbar. Sichere Zahlung über Lemon Squeezy – den Schlüssel bekommst du sofort per E-Mail und fügst ihn im Programm unter „Pro“ ein.</small></div></div>
+    <div class="card"><h3>Free</h3><ul><li>TikTok-Verbindung, Trigger und Simulator</li><li>Spawn- und Like-Overlay, Widgets</li><li>Sounds, Vorlesen und Aktionen</li><li class="no">Wasserzeichen „powered by SeriousSpawns“</li><li>Gratis-Spiele: Dosenwerfen und Golden Feather</li><li class="no">Keine weiteren Spiele und Pro-Overlays</li></ul></div>
+    <div class="card pro-card"><h3>Pro</h3><ul><li>Alles aus Free</li><li>Alle eingebauten Spiele</li><li>Streamer vs Streamer</li><li>Bingo, Glücksrad, Geschenkbox und Trailer-Aufnahme</li><li>Timer, Speedrun, Steine, Wasser, Flammen und Top-Geschenk</li><li>Alles ohne Wasserzeichen</li><li>Neue Spiele zuerst</li></ul><div class="buy"><span class="price">14,99 € / Monat</span><a class="btn small" href="https://buy.polar.sh/polar_cl_xPzaBRHHnPfD041trYOkSK0gQA9dCOV5ZyadQ3xsLA2">Pro-Abo holen</a><a class="btn small ghost" href="https://buy.polar.sh/polar_cl_xPzaBRHHnPfD041trYOkSK0gQA9dCOV5ZyadQ3xsLA2">Jahresabo 149,99 € <span class="save">−16 %</span></a><small class="savetxt">Im Jahresabo sparst du 16 % gegenüber monatlich – nur 12,50 € im Monat.</small><small>Monatlich kündbar. Sichere Zahlung über Polar – den Schlüssel bekommst du sofort per E-Mail und fügst ihn im Programm unter „Pro“ ein.</small></div></div>
   </div>
 </div></section>
 
@@ -145,12 +146,12 @@
 </div></section>
 
 <section id="neu"><div class="wrap">
-  <div class="news"><h2 style="font-size:22px">Neu in Version 0.3.22</h2><ul><li>SeriousSpawns 0.3.22</li></ul></div>
+  <div class="news"><h2 style="font-size:22px">Neu in Version 0.3.24</h2><ul><li>SeriousSpawns 0.3.24</li></ul></div>
 </div></section>
 
 <section class="cta"><div class="wrap">
   <h2>Gift it. Spawn it.</h2><p class="sub">Herunterladen, einrichten und im nächsten Live ausprobieren.</p>
-  <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.3.22/SeriousSpawns-Setup-0.3.22.exe">⬇ SeriousSpawns 0.3.22 herunterladen</a>
+  <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/latest">⬇ SeriousSpawns 0.3.24 herunterladen</a>
 </div></section>
 
 <footer><div class="wrap">
