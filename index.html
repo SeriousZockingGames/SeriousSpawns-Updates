@@ -49,7 +49,7 @@
   ol.steps li { counter-increment:s; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; position:relative }
   ol.steps li::before { content:counter(s); font-family:Bungee, sans-serif; font-size:28px; color:var(--red); display:block; margin-bottom:6px }
   .pro { font-family:Chakra, sans-serif; font-size:13px; vertical-align:middle; background:var(--red); color:#fff; border-radius:6px; padding:3px 8px; margin-left:6px }
-  .plans { display:grid; grid-template-columns:1fr 1fr; gap:16px } .plans ul { margin:10px 0 0; padding-left:20px; color:#c4c4d4 } .plans li { margin:5px 0 } .plans li.no { color:var(--mute) }
+  .plans { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px } .plans ul { margin:10px 0 0; padding-left:20px; color:#c4c4d4 } .plans li { margin:5px 0 } .plans li.no { color:var(--mute) }
   .pro-card { border-color:rgba(255,45,85,.55); box-shadow:0 0 0 1px rgba(255,45,85,.25) inset } .pro-card h3 { color:var(--red) }
   .buy { margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; align-items:center } .buy .price { font-size:22px; font-weight:800; width:100% } .buy small { color:var(--mute); width:100% }
   .buy .save { display:inline-block; background:#16c784; color:#04140c; font-weight:800; border-radius:6px; padding:1px 7px; margin-left:6px; font-size:.9em } .buy .savetxt { color:#16c784; font-weight:700 }
@@ -70,8 +70,8 @@
 <body>
 <nav><div class="wrap">
   <img src="assets/logo.png" alt=""><b>Serious<span>Spawns</span></b><span class="grow"></span>
-  <a class="l" href="#features">Funktionen</a><a class="l" href="#spiele">Spiele</a><a class="l" href="#plaene">Free & Pro</a><a class="l" href="#kauf">Kauf &amp; Support</a> <a class="l" href="#start">So geht's</a>
-  <a class="btn small" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.2/SeriousSpawns-Setup-0.4.2.exe">⬇ Download</a>
+  <a class="l" href="#features">Funktionen</a><a class="l" href="#spiele">Spiele</a><a class="l" href="#plaene">Abos</a><a class="l" href="#kauf">Kauf &amp; Support</a> <a class="l" href="#start">So geht's</a>
+  <a class="btn small" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.3/SeriousSpawns-Setup-0.4.3.exe">⬇ Download</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
@@ -80,10 +80,10 @@
     <h1>Deine Zuschauer <em>steuern</em> dein Spiel.</h1>
     <p class="lead">SeriousSpawns verbindet deinen TikTok-Live mit deinem Spiel. Geschenke, Likes und Chat-Befehle lassen Gegner, Effekte und Chaos auftauchen – live, während du spielst.</p>
     <div class="dl">
-      <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.2/SeriousSpawns-Setup-0.4.2.exe">⬇ Herunterladen</a>
+      <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.3/SeriousSpawns-Setup-0.4.3.exe">⬇ Herunterladen</a>
       <a class="btn ghost" href="#start">So geht's</a>
     </div>
-    <div class="meta">Version 0.4.2 · Windows 10/11 (64 Bit) · 2.11.2026</div>
+    <div class="meta">Version 0.4.3 · Windows 10/11 (64 Bit) · 3.11.2026</div>
   </div>
   <div class="phone"><video src="assets/spot.mp4" poster="assets/spot-poster.jpg" autoplay muted loop playsinline></video></div>
 </div></header>
@@ -93,8 +93,14 @@
   <div class="grid">
     <div class="card"><div class="ic">🎁</div><h3>Geschenke = Gegner</h3><p>Lege fest, welches Geschenk was auslöst: Rose ein Gegner, Galaxy ein Boss, Likes und Chat-Befehle ebenso.</p></div>
     <div class="card"><div class="ic">🏷️</div><h3>Zuschauer-Namen</h3><p>Bei jedem Spawn steht im Spiel und im Overlay, wer das Geschenk geschickt hat.</p></div>
-    <div class="card"><div class="ic">📺</div><h3>Overlays</h3><p>Für OBS und TikTok LIVE Studio: Trigger-Tafel, Top-Geschenk mit Bewegung, Feed, Zähler und Ziele.</p></div>
+    <div class="card"><div class="ic">📺</div><h3>Overlays</h3><p>Für OBS und TikTok LIVE Studio: Trigger-Tafel, Top-Geschenk mit Bewegung, Kamerabildrahmen, Controller-Overlay, Feuerwerk, Live-Timer, Feed, Zähler und Ziele.</p></div>
     <div class="card"><div class="ic">⚔️</div><h3>Streamer vs Streamer</h3><p>Zwei Streamer, ein Rennen: Die Zuschauer beider Lives schicken Hilfe – oder Angriffe zum Gegner.</p></div>
+    <div class="card"><div class="ic">🎮</div><h3>Multiplayer & Solo <span class="pro">NEU</span></h3><p>Auch ganz ohne Stream: Raum-Code schicken und mit Freunden zocken, jeder an seinem PC. Oder allein spielen, Auto-Spawn schickt die Gegner in drei Stufen.</p></div>
+    <div class="card"><div class="ic">🧩</div><h3>Hauptoverlay <span class="pro">NEU</span></h3><p>Alle Overlays auf einer Fläche: frei anordnen, in der Größe ändern und sperren. Ein Link für alles.</p></div>
+    <div class="card"><div class="ic">📷</div><h3>Virtuelle Kamera <span class="pro">NEU</span></h3><p>Dein ganzes Hauptoverlay als eigene Webcam für TikTok LIVE Studio, in 1080 × 1920. Geht auch in OBS.</p></div>
+    <div class="card"><div class="ic">🎯</div><h3>Spawns je Level <span class="pro">NEU</span></h3><p>Jedes Boxchaos-Level und jeder Steps-Bereich bekommt eigene Spawns und Overlays. Der Wechsel läuft automatisch mit.</p></div>
+    <div class="card"><div class="ic">🎙️</div><h3>Sprachchat <span class="pro">NEU</span></h3><p>Dein eigener Voice-Raum mit Einladungscode: bis zu 8 Personen, direkt von PC zu PC, Lautstärke je Person.</p></div>
+    <div class="card"><div class="ic">🎛️</div><h3>Stream Deck <span class="pro">NEU</span></h3><p>SeriousSpawns per Tastendruck fernsteuern, mit dem Stream Deck und ähnlichen Geräten.</p></div>
     <div class="card"><div class="ic">🎬</div><h3>Werbespot per Klick</h3><p>Trailer deines Spiels im TikTok-Hochformat direkt aus dem Programm aufnehmen – ohne OBS.</p></div>
     <div class="card"><div class="ic">🗣️</div><h3>Vorlesen & Sounds</h3><p>Chat-Nachrichten vorlesen lassen und eigene Sounds für Geschenke abspielen.</p></div>
     <div class="card"><div class="ic">⛔</div><h3>Pause & Not-Aus</h3><p>Strg+Alt+P pausiert die Spawns, Strg+Alt+X stoppt alles – auch mitten im Spiel.</p></div>
@@ -104,16 +110,20 @@
 </div></section>
 
 <section id="spiele"><div class="wrap">
-  <h2>Eigene Spiele <span class="pro">PRO</span></h2><p class="sub">Alle Spiele sind direkt eingebaut, ganz ohne Einrichtung – mit SeriousSpawns Pro. <b>Dosenwerfen</b> und <b>Golden Feather</b> spielst du schon in der Free-Version. Alle Spiele und Figuren sind eigene Entwicklungen.</p>
+  <h2>Eigene Spiele <span class="pro">PRO</span></h2><p class="sub">Boxchaos und Steps sind fest dabei, alle weiteren Spiele lädst du im Programm mit einem Klick herunter, ganz ohne Einrichtung – mit SeriousSpawns Pro. <b>Dosenwerfen</b> und <b>Golden Feather</b> spielst du schon in der Free-Version. Alle Spiele und Figuren sind eigene Entwicklungen.</p>
   <div class="games">
     <div class="game"><img src="assets/boxchaos.jpg" alt="Boxchaos" loading="lazy"><div><b>Boxchaos</b><p>Bau die Box voll – deine Zuschauer werfen Blöcke, Drachen und Diamanten hinein.</p></div></div>
-    <div class="game"><img src="assets/steps.jpg" alt="Steps" loading="lazy"><div><b>Steps</b><p>Die Treppe zur Himmelspforte – 8 Figuren, 4 Themen und die Schweine-Bombe.</p></div></div>
+    <div class="game"><img src="assets/steps.jpg" alt="Steps" loading="lazy"><div><b>Steps</b><p>Die Treppe zur Himmelspforte – 11 Figuren mit Superkräften, 4 Themen, geheime Welten und Bossfights.</p></div></div>
     <div class="game"><img src="assets/balloons.jpg" alt="Balloons" loading="lazy"><div><b>Balloons</b> <span class="pro">NEU</span><p>Pump dein Haus mit Ballons bis ins Weltall – jetzt auch zu zweit mit Rammen.</p></div></div>
     <div class="game"><img src="assets/golden-feather.jpg" alt="Golden Feather" loading="lazy"><div><b>Golden Feather</b> <span class="pro free">GRATIS</span><p>Die Nadel im Heuhaufen: Finde die eine goldene Feder unter bis zu 1.000.</p></div></div>
     <div class="game"><img src="assets/dosenwerfen.jpg" alt="Dosenwerfen" loading="lazy"><div><b>Dosenwerfen</b> <span class="pro free">GRATIS</span><p>Jahrmarkt bei Nacht: Alle Dosen vom Podest werfen – 12 Level und Endlos-Modus.</p></div></div>
     <div class="game"><img src="assets/karrrtofffel.jpg" alt="Karrrtofffel!" loading="lazy"><div><b>Karrrtofffel!</b><p>3D-Kartoffel-Rätsel mit 25 Leveln und Zeit-Zurückspulen.</p></div></div>
     <div class="game"><img src="assets/bazillus-blast.jpg" alt="Bazillus Blast" loading="lazy"><div><b>Bazillus Blast</b><p>Bunter Arcade-Spaß mit Bazillen-Horden.</p></div></div>
     <div class="game"><img src="assets/multi-rush.jpg" alt="Multi Rush" loading="lazy"><div><b>Multi Rush</b><p>4 Welten, Halloween- und Weihnachts-Modus.</p></div></div>
+    <div class="game"><img src="assets/zombie-garden.jpg" alt="Zombie Garden" loading="lazy"><div><b>Zombie Garden</b> <span class="pro">NEU</span><p>Dein Zombie will durch den Vorgarten ins Haus und holt sich die Gehirne. Deine Zuschauer schicken Helfer und Hindernisse.</p></div></div>
+    <div class="game"><img src="assets/mummy-desert.jpg" alt="Mummy Desert" loading="lazy"><div><b>Mummy Desert</b> <span class="pro">NEU</span><p>Deine Mumie schlurft durch die Wüste zur Pyramide und holt sich den goldenen Skarabäus.</p></div></div>
+    <div class="game"><img src="assets/carpet-clean.jpg" alt="Carpet Clean" loading="lazy"><div><b>Carpet Clean</b> <span class="pro">NEU</span><p>Schrubb den Teppich sauber, während deine Zuschauer für neuen Dreck sorgen.</p></div></div>
+    <div class="game"><img src="assets/fluch-nicht.jpg" alt="Fluch nicht" loading="lazy"><div><b>Fluch nicht</b> <span class="pro">NEU</span><p>Das Brettspiel-Duell: würfeln, rauswerfen und alle vier Figuren ins Ziel bringen, in fünf Welten.</p></div></div>
   </div>
   <h3 class="soonh">Demnächst</h3><p class="sub">Diese Spiele sind in Arbeit und kommen nach und nach für alle Pro-Nutzer.</p>
   <div class="games">
@@ -124,16 +134,17 @@
     <div class="game soon"><img src="assets/get-coins.jpg" alt="Get Coins" loading="lazy"><div><b>Get Coins</b> <span class="pro soon">BALD</span><p>Der riesige Geldspeicher: Jede Münze ist ein TikTok-Coin.</p></div></div>
     <div class="game soon"><img src="assets/laufsteg.jpg" alt="V.I.P." loading="lazy"><div><b>V.I.P.</b> <span class="pro soon">BALD</span><p>Über den roten Teppich zum Helikopter – Fans, Hater und Paparazzi.</p></div></div>
     <div class="game soon"><img src="assets/print-shop.jpg" alt="Print Shop" loading="lazy"><div><b>Print Shop</b> <span class="pro soon">BALD</span><p>Drucke die echten Profilbilder deiner Zuschauer – Müll oder Verkauf?</p></div></div>
-    <div class="game soon"><img src="assets/fluch-nicht.jpg" alt="Fluch nicht" loading="lazy"><div><b>Fluch nicht</b> <span class="pro soon">BALD</span><p>Das Brettspiel-Duell auf einem riesigen Holzbrett.</p></div></div>
+    <div class="game soon"><img src="assets/pool-chaos.jpg" alt="Pool Chaos" loading="lazy"><div><b>Pool Chaos</b> <span class="pro soon">BALD</span><p>Putz den total verdreckten Villen-Pool mit dem Hochdruckreiniger sauber.</p></div></div>
     <div class="game soon"><img src="assets/pyramiden-krieg.jpg" alt="Pyramiden-Krieg" loading="lazy"><div><b>Pyramiden-Krieg</b> <span class="pro soon">BALD</span><p>Verteidige deine Pyramide – gegen die KI oder bis zu 4 Streamer.</p></div></div>
   </div>
 </div></section>
 
 <section id="plaene"><div class="wrap">
-  <h2>Free & Pro</h2><p class="sub">Herunterladen und Testen ist kostenlos. Die Spiele gibt es mit Pro – monatlich kündbar.</p>
+  <h2>Free, Pro & Gamer</h2><p class="sub">Herunterladen und Testen ist kostenlos. Alle Spiele gibt es im Abo – monatlich kündbar.</p>
   <div class="plans">
     <div class="card"><h3>Free</h3><ul><li>TikTok-Verbindung, Trigger und Simulator</li><li>Spawn- und Like-Overlay, Widgets</li><li>Sounds, Vorlesen und Aktionen</li><li class="no">Wasserzeichen „powered by SeriousSpawns“</li><li>Gratis-Spiele: Dosenwerfen und Golden Feather</li><li class="no">Keine weiteren Spiele und Pro-Overlays</li></ul></div>
-    <div class="card pro-card"><h3>Pro</h3><ul><li>Alles aus Free</li><li>Alle eingebauten Spiele</li><li>Streamer vs Streamer</li><li>Bingo, Glücksrad, Geschenkbox und Trailer-Aufnahme</li><li>Timer, Speedrun, Steine, Wasser, Flammen und Top-Geschenk</li><li>Alles ohne Wasserzeichen</li><li>Neue Spiele zuerst</li></ul><div class="buy"><span class="price">14,99 € / Monat</span><a class="btn small" href="https://buy.polar.sh/polar_cl_xPzaBRHHnPfD041trYOkSK0gQA9dCOV5ZyadQ3xsLA2">Pro-Abo holen</a><a class="btn small ghost" href="https://buy.polar.sh/polar_cl_gyofM1SbZ32DaP9GlF5ucqw8JYCKXMzSuC4L42WLhT4">Jahresabo 149,99 € <span class="save">−16 %</span></a><small class="savetxt">Im Jahresabo sparst du 16 % gegenüber monatlich – nur 12,50 € im Monat.</small><small>Monatlich kündbar. Sichere Zahlung über Polar – den Schlüssel bekommst du sofort per E-Mail und fügst ihn im Programm unter „Pro“ ein.</small></div></div>
+    <div class="card pro-card"><h3>Pro <small>(TikTok Bundle)</small></h3><ul><li>Alles aus Free</li><li>Alle Spiele</li><li>Streamer vs Streamer</li><li>Multiplayer und Auto-Spawn</li><li>Bingo, Glücksrad, Geschenkbox und Trailer-Aufnahme</li><li>Timer, Speedrun, Steine, Wasser, Flammen und Top-Geschenk</li><li>Alles ohne Wasserzeichen</li><li>Neue Spiele zuerst</li></ul><div class="buy"><span class="price">14,99 € / Monat</span><a class="btn small" href="https://buy.polar.sh/polar_cl_xPzaBRHHnPfD041trYOkSK0gQA9dCOV5ZyadQ3xsLA2">Pro-Abo holen</a><a class="btn small ghost" href="https://buy.polar.sh/polar_cl_gyofM1SbZ32DaP9GlF5ucqw8JYCKXMzSuC4L42WLhT4">Jahresabo 149,99 € <span class="save">−16 %</span></a><small class="savetxt">Im Jahresabo sparst du 16 % gegenüber monatlich – nur 12,50 € im Monat.</small><small>Monatlich kündbar. Sichere Zahlung über Polar – den Schlüssel bekommst du sofort per E-Mail und fügst ihn im Programm unter „Pro“ ein.</small></div></div>
+    <div class="card"><h3>Gamer Bundle <span class="pro">NEU</span></h3><p>Für alle, die nur spielen wollen.</p><ul><li>Alle Spiele im Singleplayer und Multiplayer</li><li>Auto-Spawn in den Stufen Leicht, Mittel und Schwer</li><li>Test-Spawns in jedem Spiel</li><li class="no">Keine Streamer-Funktionen: keine TikTok-Verbindung, keine Overlays, kein Streamer vs Streamer</li></ul><div class="buy"><span class="price">6,99 € / Monat</span><a class="btn small" href="https://buy.polar.sh/polar_cl_VrspOkdQLNXDqE2gPUUF1nokOIQGerUC2xdWA4SFAl1">Monatsabo holen</a><a class="btn small ghost" href="https://buy.polar.sh/polar_cl_N7siWIjnahGFWtV35D4c75RaM8HxTddjGoYh419xALq">Jahresabo: 69,99 €</a></div></div>
   </div>
 </div></section>
 
@@ -159,12 +170,12 @@
 </div></section>
 
 <section id="neu"><div class="wrap">
-  <div class="news"><h2 style="font-size:22px">Neu in Version 0.4.2</h2><ul><li>Nach jedem Update zeigt dir SeriousSpawns jetzt, was neu ist. Mit einem Klick auf die Versionsnummer oben links kannst du es jederzeit wieder ansehen.</li><li>MyInstants-Soundsuche öffnet sich wieder richtig.</li><li>Nach dem Schließen läuft SeriousSpawns nicht mehr unsichtbar weiter.</li><li>Große Geschenk-Combos gehen bei einem Verbindungsabbruch nicht mehr verloren.</li><li>Streamer vs Streamer: Große Angriffs-Combos kommen vollständig an, und Sieg oder Niederlage stimmen auch nach einem kurzen A</li></ul></div>
+  <div class="news"><h2 style="font-size:22px">Neu in Version 0.4.3</h2><ul><li>Boxchaos: Level 7 „Baustelle“ ist ab 1.600 Siegen freispielbar, Level 8 „Eiszeit“ ab 3.200 Siegen.</li><li>Boxchaos: Neues Level Eiszeit mit Eisblöcken, passenden Spawns und rutschigem Boden.</li><li>In den Spielen erscheinen die Namen deiner TikTok-Zuschauer jetzt rot, damit du Spawns schneller zuordnen kannst.</li><li>Der waagerechte Scrollbalken in schmalen Programmfenstern ist weg.</li></ul></div>
 </div></section>
 
 <section class="cta"><div class="wrap">
   <h2>Gift it. Spawn it.</h2><p class="sub">Herunterladen, einrichten und im nächsten Live ausprobieren.</p>
-  <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.2/SeriousSpawns-Setup-0.4.2.exe">⬇ SeriousSpawns 0.4.2 herunterladen</a>
+  <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.3/SeriousSpawns-Setup-0.4.3.exe">⬇ SeriousSpawns 0.4.3 herunterladen</a>
 </div></section>
 
 <footer><div class="wrap">
