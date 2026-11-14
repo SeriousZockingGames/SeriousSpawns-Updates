@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
+<title>S.E.R.I.O.U.S. – Anmeldung</title>
+<style>
+html,body{margin:0;height:100%;background:#02060d;color:#d8f6ff;font-family:"Segoe UI",Arial,sans-serif}
+.box{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px}
+.c{max-width:460px;padding:30px 34px;border:1px solid #2ff3ff;border-radius:18px;background:#061424;box-shadow:0 0 40px #2ff3ff33;text-align:center}
+.t{letter-spacing:.35em;color:#2ff3ff;font-weight:700;margin-bottom:14px}
+h1{margin:0 0 10px;font-size:22px}p{margin:0;line-height:1.5}
+a{color:#2ff3ff}.bad{border-color:#ff5a5a;box-shadow:0 0 40px #ff5a5a33}.bad h1{color:#ff5a5a}
+</style></head><body><div class="box"><div class="c" id="c"><div class="t">S.E.R.I.O.U.S.</div><h1 id="h">Weiter zu S.E.R.I.O.U.S. …</h1><p id="p">Einen Moment – die Anmeldung geht zurück an deinen PC.</p></div></div>
+<script>
+// Weiterleitung nach der Konto-Anmeldung (TikTok, YouTube, Instagram) zurück an S.E.R.I.O.U.S. auf deinem PC.
+// Wohin, steht im „state“, den S.E.R.I.O.U.S. selbst mitgeschickt hat: ss1.<plattform>.<prüfwert>.<adresse>.
+// Erlaubt sind nur Adressen im eigenen Heimnetz bzw. auf diesem PC (und ngrok) – nichts wird hier gespeichert oder mitgelesen.
+(function () {
+  var q = new URLSearchParams(location.search), st = String(q.get('state') || '').split('.');
+  function fail(t, x) { document.getElementById('c').className = 'c bad'; document.getElementById('h').textContent = t; document.getElementById('p').textContent = x; }
+  if (st[0] !== 'ss1' || st.length !== 4 || !/^(tiktok|youtube|instagram)$/.test(st[1])) return fail('Unbekannte Anmeldung', 'Bitte in S.E.R.I.O.U.S. noch einmal auf „Verbinden“ tippen.');
+  var target = '';
+  try { target = atob(st[3].replace(/-/g, '+').replace(/_/g, '/')); } catch (e) {}
+  var ok = /^https?:\/\/((10|127)\.\d+\.\d+\.\d+|192\.168\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+\.\d+|[a-z0-9-]+\.ngrok(-free)?\.(app|dev|io))(:\d+)?$/i.test(target);
+  if (!ok) return fail('Ungültige Rücksprung-Adresse', 'Bitte in S.E.R.I.O.U.S. noch einmal auf „Verbinden“ tippen.');
+  var url = target + '/oauth/' + st[1] + location.search;
+  document.getElementById('p').innerHTML = 'Einen Moment – die Anmeldung geht zurück an deinen PC.<br><br><small>Passiert nichts? <a id="go">Hier tippen</a> (Handy und PC müssen im selben WLAN sein).</small>';
+  document.getElementById('go').href = url;
+  history.replaceState(null, '', location.pathname);     // Code nicht in der Verlaufs-Adresse stehen lassen
+  location.replace(url);
+})();
+</script></body></html>
