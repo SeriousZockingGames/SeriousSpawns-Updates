@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SeriousSpawns – Deine Zuschauer steuern dein Spiel</title>
-<meta name="description" content="SeriousSpawns verbindet deinen TikTok-Live mit deinem Spiel: Geschenke, Likes und Chat-Befehle lassen Gegner, Effekte und Chaos auftauchen.">
+<title>SeriousSpawns – Deine Zuschauer steuern dein Spiel · TikTok & Twitch</title>
+<meta name="description" content="SeriousSpawns verbindet deinen TikTok-Live oder Twitch-Stream mit deinem Spiel: Geschenke, Bits, Likes und Chat-Befehle lassen Gegner, Effekte und Chaos auftauchen. Über 30 eigene Spiele.">
 <link rel="icon" href="assets/favicon.png">
 <meta property="og:title" content="SeriousSpawns – Gift it. Spawn it.">
-<meta property="og:description" content="Deine TikTok-Zuschauer steuern dein Spiel.">
+<meta property="og:description" content="Deine TikTok- und Twitch-Zuschauer steuern dein Spiel.">
 <meta property="og:image" content="assets/spot-poster.jpg">
 <style>
   @font-face { font-family:Bungee; src:url(assets/bungee-latin-400-normal.ttf); font-display:swap }
   @font-face { font-family:Chakra; src:url(assets/chakra-petch-latin-700-normal.ttf); font-display:swap }
-  :root { --bg:#0b0b10; --panel:#14141c; --line:#262634; --text:#ececf3; --mute:#9a9ab0; --red:#ff2d55; --cyan:#25f4ee; --ok:#3ddc84 }
+  :root { --bg:#0b0b10; --panel:#14141c; --line:#262634; --text:#ececf3; --mute:#9a9ab0; --red:#ff2d55; --cyan:#25f4ee; --ok:#3ddc84; --tw:#9146ff; --tw2:#bf94ff }
   * { box-sizing:border-box }
   html { scroll-behavior:smooth }
   body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 "Segoe UI", system-ui, -apple-system, sans-serif }
@@ -22,18 +22,20 @@
   nav .wrap { display:flex; align-items:center; gap:14px; height:62px }
   nav img { width:36px; height:36px; border-radius:9px }
   nav b { font-family:Bungee, sans-serif; font-weight:400; font-size:18px } nav b span { color:var(--red) }
-  nav .grow { flex:1 } nav a.l { color:var(--mute); text-decoration:none; font-size:15px } nav a.l:hover { color:var(--text) }
+  nav .grow { flex:1 } nav a.l { color:var(--mute); text-decoration:none; font-size:15px } nav a.l:hover { color:var(--text) } nav a.l.tw { color:var(--tw2) }
   .btn { display:inline-flex; align-items:center; gap:10px; background:var(--red); color:#fff; text-decoration:none; font-weight:800; padding:14px 26px; border-radius:12px; box-shadow:0 8px 28px rgba(255,45,85,.35); transition:transform .15s }
   .btn:hover { transform:translateY(-2px) } .btn.small { padding:9px 16px; font-size:14px; box-shadow:none }
   .btn.ghost { background:transparent; border:1px solid var(--line); box-shadow:none; color:var(--text) }
-  header.hero { padding:70px 0 50px; background:radial-gradient(600px 400px at 15% 20%, rgba(255,45,85,.22), transparent 70%), radial-gradient(600px 400px at 90% 80%, rgba(37,244,238,.15), transparent 70%) }
+  .btn.twb { background:var(--tw); box-shadow:0 8px 28px rgba(145,70,255,.35) } .btn.small.twb { box-shadow:none } .btn.ghost.twg { border-color:rgba(145,70,255,.6) }
+  header.hero { padding:70px 0 50px; background:radial-gradient(600px 400px at 15% 20%, rgba(255,45,85,.22), transparent 70%), radial-gradient(600px 400px at 90% 80%, rgba(145,70,255,.2), transparent 70%) }
   .hero .wrap { display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center }
-  .kicker { font-family:Chakra, sans-serif; color:var(--cyan); letter-spacing:.14em; text-transform:uppercase; font-size:14px }
+  .kicker { font-family:Chakra, sans-serif; color:var(--cyan); letter-spacing:.14em; text-transform:uppercase; font-size:14px } .kicker i { font-style:normal; color:var(--tw2) }
   h1 { font-family:Bungee, sans-serif; font-weight:400; font-size:clamp(34px, 5.5vw, 60px); line-height:1.05; margin:10px 0 16px }
   h1 em { font-style:normal; color:var(--red) }
   .lead { font-size:19px; color:#cfcfe0; max-width:560px }
   .dl { margin-top:26px; display:flex; flex-wrap:wrap; gap:12px; align-items:center }
   .meta { color:var(--mute); font-size:14px; margin-top:12px }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px } .chips span { font-family:Chakra, sans-serif; font-size:13px; border-radius:30px; padding:5px 12px; background:var(--panel); border:1px solid var(--line) } .chips .t1 { border-color:rgba(255,45,85,.6) } .chips .t2 { border-color:rgba(145,70,255,.7); color:var(--tw2) }
   .phone { justify-self:center; width:270px; aspect-ratio:9/16; border-radius:28px; overflow:hidden; border:6px solid #1c1c26; box-shadow:0 20px 60px rgba(0,0,0,.6), 0 0 0 1px var(--line) }
   .phone video { width:100%; height:100%; object-fit:cover; display:block; background:#000 }
   section { padding:60px 0 }
@@ -41,16 +43,21 @@
   .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px }
   .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px }
   .card .ic { font-size:30px } .card h3 { margin:8px 0 6px; font-size:18px } .card p { margin:0; color:#c4c4d4; font-size:15px }
+  .card.twc { border-color:rgba(145,70,255,.55); background:linear-gradient(135deg,rgba(145,70,255,.16),rgba(20,20,28,1) 70%) }
   .games { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px }
   .game { background:var(--panel); border:1px solid var(--line); border-radius:16px; overflow:hidden }
-  .game img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block } .pro.free { background:#16c784; color:#04140c } .pro.soon { background:#25f4ee; color:#04141a } .soonh { margin:42px 0 4px; font-size:24px } .game div { padding:14px 16px } .game b { font-size:17px } .game p { margin:4px 0 0; color:var(--mute); font-size:14px }
-  .mods { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px } .mods span { background:var(--panel); border:1px solid var(--line); border-radius:30px; padding:8px 16px; font-size:15px }
+  .game img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block } .pro.free { background:#16c784; color:#04140c } .pro.soon { background:#25f4ee; color:#04141a } .pro.new { background:#ffd23f; color:#1a1400 } .pro.twp { background:var(--tw) } .soonh { margin:42px 0 4px; font-size:24px } .game div { padding:14px 16px } .game b { font-size:17px } .game p { margin:4px 0 0; color:var(--mute); font-size:14px }
   ol.steps { counter-reset:s; list-style:none; padding:0; display:grid; grid-template-columns:repeat(4, 1fr); gap:16px }
   ol.steps li { counter-increment:s; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; position:relative }
   ol.steps li::before { content:counter(s); font-family:Bungee, sans-serif; font-size:28px; color:var(--red); display:block; margin-bottom:6px }
   .pro { font-family:Chakra, sans-serif; font-size:13px; vertical-align:middle; background:var(--red); color:#fff; border-radius:6px; padding:3px 8px; margin-left:6px }
-  .plans { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px } .plans ul { margin:10px 0 0; padding-left:20px; color:#c4c4d4 } .plans li { margin:5px 0 } .plans li.no { color:var(--mute) }
+  .tw-sec { background:radial-gradient(700px 380px at 80% 30%, rgba(145,70,255,.22), transparent 70%) }
+  .tw-sec h2 span { color:var(--tw2) }
+  .twlist { display:grid; grid-template-columns:repeat(2, 1fr); gap:10px 26px; margin:0; padding:0; list-style:none } .twlist li { padding-left:26px; position:relative; color:#d6d0e6 } .twlist li::before { content:"◆"; color:var(--tw); position:absolute; left:0 }
+  .plans { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px } .plans ul { margin:10px 0 0; padding-left:20px; color:#c4c4d4 } .plans li { margin:5px 0 } .plans li.no { color:var(--mute) }
   .pro-card { border-color:rgba(255,45,85,.55); box-shadow:0 0 0 1px rgba(255,45,85,.25) inset } .pro-card h3 { color:var(--red) }
+  .tw-card { border-color:rgba(145,70,255,.6); box-shadow:0 0 0 1px rgba(145,70,255,.25) inset } .tw-card h3 { color:var(--tw2) }
+  .duo-card { border-color:rgba(255,45,85,.5); background:linear-gradient(135deg,rgba(255,45,85,.12),rgba(145,70,255,.16)) } .duo-card h3 { background:linear-gradient(90deg,#ff2d55,#bf94ff); -webkit-background-clip:text; background-clip:text; color:transparent }
   .buy { margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; align-items:center } .buy .price { font-size:22px; font-weight:800; width:100% } .buy small { color:var(--mute); width:100% }
   .buy .save { display:inline-block; background:#16c784; color:#04140c; font-weight:800; border-radius:6px; padding:1px 7px; margin-left:6px; font-size:.9em } .buy .savetxt { color:#16c784; font-weight:700 }
   .note { background:#1a1420; border:1px solid #4a2236; border-radius:14px; padding:16px 18px; color:#e6cfd8; font-size:15px }
@@ -62,27 +69,28 @@
   footer a { color:var(--mute) }
   @media (max-width:820px) {
     .hero .wrap { grid-template-columns:1fr } .phone { width:220px }
-    .grid, .games { grid-template-columns:1fr 1fr } ol.steps { grid-template-columns:1fr 1fr } nav a.l { display:none } .plans { grid-template-columns:1fr }
+    .grid, .games { grid-template-columns:1fr 1fr } ol.steps { grid-template-columns:1fr 1fr } nav a.l { display:none } .twlist { grid-template-columns:1fr }
   }
-  @media (max-width:520px) { .grid, .games, ol.steps { grid-template-columns:1fr } }
+  @media (max-width:520px) { .grid, .games, ol.steps { grid-template-columns:1fr } .plans { grid-template-columns:1fr } }
 </style>
 </head>
 <body>
 <nav><div class="wrap">
   <img src="assets/logo.png" alt=""><b>Serious<span>Spawns</span></b><span class="grow"></span>
-  <a class="l" href="#features">Funktionen</a><a class="l" href="#spiele">Spiele</a><a class="l" href="#plaene">Abos</a><a class="l" href="#kauf">Kauf &amp; Support</a> <a class="l" href="#start">So geht's</a>
+  <a class="l" href="#features">Funktionen</a><a class="l tw" href="#twitch">Twitch</a><a class="l" href="#spiele">Spiele</a><a class="l" href="#plaene">Abos</a><a class="l" href="#kauf">Kauf &amp; Support</a> <a class="l" href="#start">So geht's</a>
   <a class="btn small" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.5/SeriousSpawns-Setup-0.4.5.exe">⬇ Download</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
   <div>
-    <div class="kicker">Für TikTok-Live-Streamer</div>
+    <div class="kicker">Für TikTok-Live- und <i>Twitch</i>-Streamer</div>
     <h1>Deine Zuschauer <em>steuern</em> dein Spiel.</h1>
-    <p class="lead">SeriousSpawns verbindet deinen TikTok-Live mit deinem Spiel. Geschenke, Likes und Chat-Befehle lassen Gegner, Effekte und Chaos auftauchen – live, während du spielst.</p>
+    <p class="lead">SeriousSpawns verbindet deinen TikTok-Live oder Twitch-Stream mit deinem Spiel. Geschenke, Bits, Likes und Chat-Befehle lassen Gegner, Effekte und Chaos auftauchen – live, während du spielst.</p>
     <div class="dl">
       <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.5/SeriousSpawns-Setup-0.4.5.exe">⬇ Herunterladen</a>
       <a class="btn ghost" href="#start">So geht's</a>
     </div>
+    <div class="chips"><span class="t1">TikTok LIVE</span><span class="t2">Twitch</span><span>Über 30 eigene Spiele</span><span>VTuber · Voice Changer · Puls</span></div>
     <div class="meta">Version 0.4.5 · Windows 10/11 (64 Bit) · 3.11.2026</div>
   </div>
   <div class="phone"><video src="assets/spot.mp4" poster="assets/spot-poster.jpg" autoplay muted loop playsinline></video></div>
@@ -91,68 +99,113 @@
 <section id="features"><div class="wrap">
   <h2>Alles drin</h2><p class="sub">Einmal einrichten – dann macht dein Chat den Rest.</p>
   <div class="grid">
-    <div class="card"><div class="ic">🎁</div><h3>Geschenke = Gegner</h3><p>Lege fest, welches Geschenk was auslöst: Rose ein Gegner, Galaxy ein Boss, Likes und Chat-Befehle ebenso.</p></div>
-    <div class="card"><div class="ic">🏷️</div><h3>Zuschauer-Namen</h3><p>Bei jedem Spawn steht im Spiel und im Overlay, wer das Geschenk geschickt hat.</p></div>
-    <div class="card"><div class="ic">📺</div><h3>Overlays</h3><p>Für OBS und TikTok LIVE Studio: Trigger-Tafel, Top-Geschenk mit Bewegung, Kamerabildrahmen, Controller-Overlay, Feuerwerk, Live-Timer, Feed, Zähler und Ziele.</p></div>
-    <div class="card"><div class="ic">⚔️</div><h3>Streamer vs Streamer</h3><p>Zwei Streamer, ein Rennen: Die Zuschauer beider Lives schicken Hilfe – oder Angriffe zum Gegner.</p></div>
-    <div class="card"><div class="ic">🎮</div><h3>Multiplayer & Solo <span class="pro">NEU</span></h3><p>Auch ganz ohne Stream: Raum-Code schicken und mit Freunden zocken, jeder an seinem PC. Oder allein spielen, Auto-Spawn schickt die Gegner in drei Stufen.</p></div>
-    <div class="card"><div class="ic">🧩</div><h3>Hauptoverlay <span class="pro">NEU</span></h3><p>Alle Overlays auf einer Fläche: frei anordnen, in der Größe ändern und sperren. Ein Link für alles.</p></div>
-    <div class="card"><div class="ic">📷</div><h3>Virtuelle Kamera <span class="pro">NEU</span></h3><p>Dein ganzes Hauptoverlay als eigene Webcam für TikTok LIVE Studio, in 1080 × 1920. Geht auch in OBS.</p></div>
-    <div class="card"><div class="ic">🎯</div><h3>Spawns je Level <span class="pro">NEU</span></h3><p>Jedes Boxchaos-Level und jeder Steps-Bereich bekommt eigene Spawns und Overlays. Der Wechsel läuft automatisch mit.</p></div>
-    <div class="card"><div class="ic">🎙️</div><h3>Sprachchat <span class="pro">NEU</span></h3><p>Dein eigener Voice-Raum mit Einladungscode: bis zu 8 Personen, direkt von PC zu PC, Lautstärke je Person.</p></div>
-    <div class="card"><div class="ic">🎛️</div><h3>Stream Deck <span class="pro">NEU</span></h3><p>SeriousSpawns per Tastendruck fernsteuern, mit dem Stream Deck und ähnlichen Geräten.</p></div>
+    <div class="card twc"><div class="ic">🟣</div><h3>Jetzt auch für Twitch <span class="pro twp">NEU</span></h3><p>Spawns, Overlays und Effekte für deinen Twitch-Stream – mit Bits statt Geschenken. Umschalten unten im Hauptmenü. <a href="#twitch" style="color:var(--tw2)">Mehr dazu</a></p></div>
+    <div class="card"><div class="ic">🧑‍🎤</div><h3>VTuber-Avatare <span class="pro new">NEU</span></h3><p>Realistische 3D-Figuren, die deine Webcam steuert – mit Mundbewegung passend zu deiner Stimme. <b>Pro</b></p></div>
+    <div class="card"><div class="ic">🎙️</div><h3>Voice Changer <span class="pro new">NEU</span></h3><p>Geschenke oder Bits verstellen für eine einstellbare Zeit deine Stimme. Läuft mit virtuellem Mikrofon, GoXLR oder RØDECaster – mit Anleitung im Programm. <b>Pro</b></p></div>
+    <div class="card"><div class="ic">💓</div><h3>Herzschlag <span class="pro new">NEU</span></h3><p>Dein echter Puls live im Stream, z. B. von der Galaxy Watch – mit mehreren Layouts und eigenen Puls-Auslösern. Kostenlos im Heimnetz. <b>Pro</b></p></div>
+    <div class="card"><div class="ic">🎬</div><h3>Bildschirm-Effekte <span class="pro new">NEU</span></h3><p>Horror-Nonne, Clown, Explosion, Blendgranate, Spinnen, Feuerwand, Tornado und mehr – ausgelöst durch Geschenke oder Bits. <b>Pro</b></p></div>
+    <div class="card"><div class="ic">🎭</div><h3>Kamera-Filter <span class="pro new">NEU</span></h3><p>Deine Zuschauer setzen dir Gesichtsfilter auf – per Geschenk auf TikTok, per Bits auf Twitch. Über Streamfog, mit Schritt-für-Schritt-Anleitung. <b>Pro</b></p></div>
+    <div class="card"><div class="ic">🎡</div><h3>Glücksrad, Kalender & Laufband <span class="pro new">NEU</span></h3><p>Zufalls-Spawns als Spawn-Glücksrad, Klapp-Kalender oder Laufband quer durchs Bild – farbig nach Art: Angriff rot, Helfer grün, Effekte blau. Ohne Spiel drehen sie Effekte, Filter und Stimmen. <b>Pro</b></p></div>
+    <div class="card"><div class="ic">🎁</div><h3>Geschenke = Gegner</h3><p>Lege fest, was was auslöst: Rose ein Gegner, Galaxy ein Boss – auf Twitch Bits, Abos und Kanalpunkte. Likes und Chat-Befehle ebenso.</p></div>
+    <div class="card"><div class="ic">🏷️</div><h3>Zuschauer-Namen</h3><p>Bei jedem Spawn steht im Spiel und im Overlay, wer ihn geschickt hat – TikTok in Rot, Twitch in Lila.</p></div>
+    <div class="card"><div class="ic">📺</div><h3>Overlays</h3><p>Für OBS und TikTok LIVE Studio: Trigger-Tafel, Top-Geschenk, Kamerabildrahmen, Controller- und Maus-Overlay, Death-Counter, Feuerwerk, Live-Timer, Feed, Zähler und Ziele.</p></div>
+    <div class="card"><div class="ic">⚔️</div><h3>Streamer vs Streamer</h3><p>Zwei Streamer, ein Rennen: Die Zuschauer beider Lives schicken Hilfe – oder Angriffe zum Gegner. Für TikTok LIVE.</p></div>
+    <div class="card"><div class="ic">🎮</div><h3>Multiplayer & Solo</h3><p>Auch ganz ohne Stream: Raum-Code schicken und mit Freunden zocken, jeder an seinem PC. Oder allein spielen, Auto-Spawn schickt die Gegner in drei Stufen.</p></div>
+    <div class="card"><div class="ic">🧩</div><h3>Hauptoverlay</h3><p>Alle Overlays auf einer Fläche: frei anordnen, in der Größe ändern und sperren. Ein Link für alles – für Twitch auch im Querformat.</p></div>
+    <div class="card"><div class="ic">📷</div><h3>Virtuelle Kamera</h3><p>Dein ganzes Hauptoverlay als eigene Webcam für TikTok LIVE Studio, in 1080 × 1920. Geht auch in OBS.</p></div>
+    <div class="card"><div class="ic">🎯</div><h3>Spawns je Level</h3><p>Jedes Level und jeder Bereich bekommt eigene Spawns und Overlays. Der Wechsel läuft automatisch mit.</p></div>
+    <div class="card"><div class="ic">🎙️</div><h3>Sprachchat</h3><p>Dein eigener Voice-Raum mit Einladungscode: bis zu 8 Personen, direkt von PC zu PC, Lautstärke je Person.</p></div>
+    <div class="card"><div class="ic">🎛️</div><h3>Stream Deck</h3><p>SeriousSpawns per Tastendruck fernsteuern, mit dem Stream Deck und ähnlichen Geräten.</p></div>
+    <div class="card"><div class="ic">🗣️</div><h3>Vorlesen & Sounds</h3><p>Chat-Nachrichten vorlesen lassen – jetzt auch mit neuen, natürlichen KI-Stimmen – und eigene Sounds für Geschenke abspielen.</p></div>
     <div class="card"><div class="ic">🎬</div><h3>Werbespot per Klick</h3><p>Trailer deines Spiels im TikTok-Hochformat direkt aus dem Programm aufnehmen – ohne OBS.</p></div>
-    <div class="card"><div class="ic">🗣️</div><h3>Vorlesen & Sounds</h3><p>Chat-Nachrichten vorlesen lassen und eigene Sounds für Geschenke abspielen.</p></div>
     <div class="card"><div class="ic">⛔</div><h3>Pause & Not-Aus</h3><p>Strg+Alt+P pausiert die Spawns, Strg+Alt+X stoppt alles – auch mitten im Spiel.</p></div>
-    <div class="card"><div class="ic">🔄</div><h3>Läuft stabil</h3><p>Verbindet sich nach Abbrüchen selbst neu und aktualisiert sich automatisch.</p></div>
+    <div class="card"><div class="ic">🔄</div><h3>Läuft stabil</h3><p>Verbindet sich nach Abbrüchen selbst neu und aktualisiert sich automatisch. Neue Spiele und Funktionen meldet das Programm selbst.</p></div>
     <div class="card" style="border-color:rgba(255,45,85,.55);background:linear-gradient(135deg,rgba(255,45,85,.14),rgba(37,244,238,.06))"><div class="ic">🛠️</div><h3>Dein eigenes Spiel</h3><p>Du willst ein Spiel nur für deinen Live – mit deinen Ideen, Figuren und Geschenk-Aktionen? Ich programmiere es dir. Anfrage an <a href="mailto:support@seriousspawns.com?subject=Eigenes%20Spiel%20f%C3%BCr%20meinen%20Live">support@seriousspawns.com</a></p></div>
   </div>
 </div></section>
 
+<section id="twitch" class="tw-sec"><div class="wrap">
+  <h2>Jetzt auch für <span>Twitch</span> <span class="pro twp">NEU</span></h2><p class="sub">Ein Programm für beide Plattformen. Unten im Hauptmenü wechselst du zwischen TikTok und Twitch – jede Seite hat ihre eigenen Overlays und Einstellungen.</p>
+  <ul class="twlist">
+    <li><b>Bits statt Geschenke:</b> Spawns, Timer und Effekte laufen über Bits, ein Abo zählt wie 500 Bits.</li>
+    <li><b>Alle Twitch-Ereignisse:</b> Follows, Abos, Geschenk-Abos, Raids, Chat und Kanalpunkte.</li>
+    <li><b>Eigene Twitch-Overlays in Lila:</b> Kamerabildrahmen, Top-Geschenk, Logo und Geschenkbox-Maskottchen im Twitch-Look.</li>
+    <li><b>Hoch- und Querformat:</b> eigenes Hauptoverlay im Querformat für deinen Twitch-Stream.</li>
+    <li><b>Alle Spiele und Pro-Funktionen:</b> VTuber-Avatare, Voice Changer, Herzschlag, Bildschirm-Effekte und Kamera-Filter auch auf Twitch.</li>
+    <li><b>Offizielle Anmeldung:</b> Du meldest dich direkt bei Twitch an, ohne Passwort im Programm.</li>
+  </ul>
+  <div class="dl"><a class="btn twb" href="#plaene">Twitch Bundle ansehen</a><a class="btn ghost twg" href="#plaene">TikTok + Twitch im Bundle</a></div>
+</div></section>
+
 <section id="spiele"><div class="wrap">
-  <h2>Eigene Spiele <span class="pro">PRO</span></h2><p class="sub">Boxchaos und Steps sind fest dabei, alle weiteren Spiele lädst du im Programm mit einem Klick herunter, ganz ohne Einrichtung – mit SeriousSpawns Pro. <b>Dosenwerfen</b> und <b>Golden Feather</b> spielst du schon in der Free-Version. Alle Spiele und Figuren sind eigene Entwicklungen.</p>
+  <h2>Eigene Spiele <span class="pro">PRO</span></h2><p class="sub">Über 30 Spiele, und ständig kommen neue dazu. Boxchaos und Steps sind fest dabei, alle weiteren Spiele installierst du im Programm mit einem Klick – ganz ohne Einrichtung, mit einem Streamer-Abo oder dem Gamer Bundle. <b>Dosenwerfen</b> und <b>Golden Feather</b> spielst du schon in der Free-Version. Alle Spiele und Figuren sind eigene Entwicklungen.</p>
   <div class="games">
     <div class="game"><img src="assets/boxchaos.jpg" alt="Boxchaos" loading="lazy"><div><b>Boxchaos</b><p>Bau die Box voll – deine Zuschauer werfen Blöcke, Drachen und Diamanten hinein.</p></div></div>
-    <div class="game"><img src="assets/steps.jpg" alt="Steps" loading="lazy"><div><b>Steps</b><p>Die Treppe zur Himmelspforte – 11 Figuren mit Superkräften, 4 Themen, geheime Welten und Bossfights.</p></div></div>
-    <div class="game"><img src="assets/balloons.jpg" alt="Balloons" loading="lazy"><div><b>Balloons</b> <span class="pro">NEU</span><p>Pump dein Haus mit Ballons bis ins Weltall – jetzt auch zu zweit mit Rammen.</p></div></div>
+    <div class="game"><img src="assets/steps.jpg" alt="Steps" loading="lazy"><div><b>Steps</b><p>Die Treppe zur Himmelspforte – Figuren mit Superkräften, mehrere Themen, geheime Welten und Bossfights.</p></div></div>
+    <div class="game"><img src="assets/go-karts.jpg" alt="Go-Karts" loading="lazy"><div><b>Go-Karts</b> <span class="pro new">NEU</span><p>Kart-Rennen gegen 7 KI-Fahrer: 9 Fahrer mit Superkraft, 6 Karts und 8 Strecken bis ins Weltall.</p></div></div>
+    <div class="game"><img src="assets/summit-chaos.jpg" alt="Summit Chaos" loading="lazy"><div><b>Summit Chaos</b> <span class="pro new">NEU</span><p>Mit echter Auto-Physik die Bergstraße vom Strand bis zum Gipfel – deine Zuschauer schießen dich in den Himmel.</p></div></div>
+    <div class="game"><img src="assets/stop-the-train.jpg" alt="Stop the Train" loading="lazy"><div><b>Stop the Train</b> <span class="pro new">NEU</span><p>Bring den Güterzug durch den Canyon zum Bahnhof, während der Chat Autos, Panzer und Kühe auf die Gleise wirft.</p></div></div>
+    <div class="game"><img src="assets/farm-run.jpg" alt="Farm Run" loading="lazy"><div><b>Farm Run</b> <span class="pro new">NEU</span><p>Lauf über die Felder zur großen roten Scheune – vorbei an Hühnern, Kühen, Pferden und spuckenden Alpakas.</p></div></div>
+    <div class="game"><img src="assets/himmelsleiter.jpg" alt="Himmelsleiter" loading="lazy"><div><b>Himmelsleiter</b> <span class="pro new">NEU</span><p>Kletter die endlose Leiter durch Wolken und Weltall bis zum goldenen Himmelstor.</p></div></div>
+    <div class="game"><img src="assets/kohlkoenig.jpg" alt="Kohlkönig" loading="lazy"><div><b>Kohlkönig</b> <span class="pro new">NEU</span><p>Pflanz das ganze Feld voll – 1.024 Kohlköpfe, Kürbisse oder Sonnenblumen, dann wird geerntet.</p></div></div>
+    <div class="game"><img src="assets/putt-chaos.jpg" alt="Putt Chaos" loading="lazy"><div><b>Putt Chaos</b> <span class="pro new">NEU</span><p>Minigolf in 3D: Lauf selbst zum Ball, schlag ab und prügel dich mit allem, was der Chat schickt.</p></div></div>
+    <div class="game"><img src="assets/sky-ramp.jpg" alt="Sky Ramp" loading="lazy"><div><b>Sky Ramp</b> <span class="pro new">NEU</span><p>Die Mega-Rampe runter, über die Schanze und durch Feuerringe oder den Bogen eines Steinviadukts.</p></div></div>
+    <div class="game"><img src="assets/stack-chaos.jpg" alt="Stack Chaos" loading="lazy"><div><b>Stack Chaos</b> <span class="pro new">NEU</span><p>Bau auf einer schwebenden Insel einen runden Turm aus Boxchaos-Blöcken bis über die Wolken.</p></div></div>
+    <div class="game"><img src="assets/sand-chaos.jpg" alt="Sand Chaos" loading="lazy"><div><b>Sand Chaos</b> <span class="pro new">NEU</span><p>Grab den ganzen Sandberg mit der Schaufel ab – der Sand rutscht nach, der Chat schüttet neuen drauf.</p></div></div>
+    <div class="game"><img src="assets/saugchaos.jpg" alt="Saugchaos" loading="lazy"><div><b>Saugchaos</b> <span class="pro new">NEU</span><p>Bällebad-Alarm: Saug das Kinderzimmer leer, während deine Zuschauer Tausende neue Bälle hineinkippen.</p></div></div>
+    <div class="game"><img src="assets/lost-bot.jpg" alt="Lost Bot" loading="lazy"><div><b>Lost Bot</b> <span class="pro new">NEU</span><p>Das Kachel-Rätsel aus den Lives: Schieb die Kacheln, bis der kleine Roboter den Weg nach Hause findet.</p></div></div>
+    <div class="game"><img src="assets/pool-chaos.jpg" alt="Pool Chaos" loading="lazy"><div><b>Pool Chaos</b> <span class="pro new">NEU</span><p>Putz den total verdreckten Villen-Pool mit dem Hochdruckreiniger sauber.</p></div></div>
+    <div class="game"><img src="assets/print-shop.jpg" alt="Print Shop" loading="lazy"><div><b>Print Shop</b> <span class="pro new">NEU</span><p>Drucke die echten Profilbilder deiner Zuschauer – Müll, Verkauf oder gerahmt an die Wand?</p></div></div>
+    <div class="game"><img src="assets/under-construction.jpg" alt="Under Construction" loading="lazy"><div><b>Under Construction</b> <span class="pro new">NEU</span><p>Hämmer deinen Stahlturm Etage für Etage in den Himmel – 99 Level in 8 Welten.</p></div></div>
+    <div class="game"><img src="assets/dino-rush.jpg" alt="Dino Rush" loading="lazy"><div><b>Dino Rush</b> <span class="pro new">NEU</span><p>Dein T-Rex rennt durch die Wüste ins Ziel – gegen Raptoren, Mammuts, Kometen und Sandstürme.</p></div></div>
+    <div class="game"><img src="assets/paint-chaos.jpg" alt="Paint Chaos" loading="lazy"><div><b>Paint Chaos</b> <span class="pro new">NEU</span><p>Färb mit dem Farbblaster die ganze Arena ein – jede Runde in einer neuen Welt.</p></div></div>
+    <div class="game"><img src="assets/strike-chaos.jpg" alt="Strike Chaos" loading="lazy"><div><b>Strike Chaos</b> <span class="pro new">NEU</span><p>Realistisches 3D-Bowling nach dem Wii-Prinzip mit echter Physik und allen Steps-Figuren.</p></div></div>
+    <div class="game"><img src="assets/rampage.jpg" alt="Rampage" loading="lazy"><div><b>Rampage</b> <span class="pro new">NEU</span><p>King of the Hill: die Mega-Rampe auf der Großbaustelle hoch, bis zum Feierabend am Container.</p></div></div>
+    <div class="game"><img src="assets/get-coins.jpg" alt="Get Coins" loading="lazy"><div><b>Get Coins</b> <span class="pro new">NEU</span><p>Der riesige Geldspeicher: Jede Münze ist ein TikTok-Coin mit dem Namen des Schenkers.</p></div></div>
+    <div class="game"><img src="assets/lautlos.jpg" alt="Silence!" loading="lazy"><div><b>Silence!</b><p>Backrooms-Horror in Ego-Sicht: Die Wesen hören deine Schritte – und die Geräusche deiner Zuschauer.</p></div></div>
+    <div class="game"><img src="assets/dishwasher.jpg" alt="Dishwasher" loading="lazy"><div><b>Dishwasher</b><p>Spülhelfer in der Großküche: Die Bedienungen bringen Geschirr, deine Zuschauer noch viel mehr.</p></div></div>
+    <div class="game"><img src="assets/carpet-clean.jpg" alt="Carpet Clean" loading="lazy"><div><b>Carpet Clean</b><p>Schrubb den Teppich sauber, während deine Zuschauer für neuen Dreck sorgen.</p></div></div>
+    <div class="game"><img src="assets/mummy-desert.jpg" alt="Mummy Desert" loading="lazy"><div><b>Mummy Desert</b><p>Deine Mumie schlurft durch die Wüste zur Pyramide und holt sich den goldenen Skarabäus.</p></div></div>
+    <div class="game"><img src="assets/fluch-nicht.jpg" alt="Fluch nicht" loading="lazy"><div><b>Fluch nicht</b><p>Das Brettspiel-Duell: würfeln, rauswerfen und alle vier Figuren ins Ziel bringen, in fünf Welten.</p></div></div>
+    <div class="game"><img src="assets/zombie-garden.jpg" alt="Zombie Garden" loading="lazy"><div><b>Zombie Garden</b><p>Dein Zombie will durch den Vorgarten ins Haus und holt sich die Gehirne.</p></div></div>
+    <div class="game"><img src="assets/balloons.jpg" alt="Balloons" loading="lazy"><div><b>Balloons</b><p>Pump dein Haus mit Ballons bis ins Weltall – auch zu zweit mit Rammen.</p></div></div>
     <div class="game"><img src="assets/golden-feather.jpg" alt="Golden Feather" loading="lazy"><div><b>Golden Feather</b> <span class="pro free">GRATIS</span><p>Die Nadel im Heuhaufen: Finde die eine goldene Feder unter bis zu 1.000.</p></div></div>
     <div class="game"><img src="assets/dosenwerfen.jpg" alt="Dosenwerfen" loading="lazy"><div><b>Dosenwerfen</b> <span class="pro free">GRATIS</span><p>Jahrmarkt bei Nacht: Alle Dosen vom Podest werfen – 12 Level und Endlos-Modus.</p></div></div>
     <div class="game"><img src="assets/karrrtofffel.jpg" alt="Karrrtofffel!" loading="lazy"><div><b>Karrrtofffel!</b><p>3D-Kartoffel-Rätsel mit 25 Leveln und Zeit-Zurückspulen.</p></div></div>
     <div class="game"><img src="assets/bazillus-blast.jpg" alt="Bazillus Blast" loading="lazy"><div><b>Bazillus Blast</b><p>Bunter Arcade-Spaß mit Bazillen-Horden.</p></div></div>
-    <div class="game"><img src="assets/multi-rush.jpg" alt="Multi Rush" loading="lazy"><div><b>Multi Rush</b><p>4 Welten, Halloween- und Weihnachts-Modus.</p></div></div>
-    <div class="game"><img src="assets/zombie-garden.jpg" alt="Zombie Garden" loading="lazy"><div><b>Zombie Garden</b> <span class="pro">NEU</span><p>Dein Zombie will durch den Vorgarten ins Haus und holt sich die Gehirne. Deine Zuschauer schicken Helfer und Hindernisse.</p></div></div>
-    <div class="game"><img src="assets/mummy-desert.jpg" alt="Mummy Desert" loading="lazy"><div><b>Mummy Desert</b> <span class="pro">NEU</span><p>Deine Mumie schlurft durch die Wüste zur Pyramide und holt sich den goldenen Skarabäus.</p></div></div>
-    <div class="game"><img src="assets/carpet-clean.jpg" alt="Carpet Clean" loading="lazy"><div><b>Carpet Clean</b> <span class="pro">NEU</span><p>Schrubb den Teppich sauber, während deine Zuschauer für neuen Dreck sorgen.</p></div></div>
-    <div class="game"><img src="assets/fluch-nicht.jpg" alt="Fluch nicht" loading="lazy"><div><b>Fluch nicht</b> <span class="pro">NEU</span><p>Das Brettspiel-Duell: würfeln, rauswerfen und alle vier Figuren ins Ziel bringen, in fünf Welten.</p></div></div>
+    <div class="game"><img src="assets/multi-rush.jpg" alt="Multi Rush" loading="lazy"><div><b>Multi Rush</b><p>Sammeln, ausweichen, überleben – 4 Themen mit Halloween- und Weihnachts-Modus.</p></div></div>
   </div>
-  <h3 class="soonh">Demnächst</h3><p class="sub">Diese Spiele sind in Arbeit und kommen nach und nach für alle Pro-Nutzer.</p>
+  <h3 class="soonh">Demnächst</h3><p class="sub">Diese Spiele sind in Arbeit und kommen nach und nach dazu.</p>
   <div class="games">
-    <div class="game soon"><img src="assets/ring-rivals.jpg" alt="Ring Rivals" loading="lazy"><div><b>Ring Rivals</b> <span class="pro soon">BALD</span><p>3D-Arcade-Wrestling mit Monstern, Specials und Continues.</p></div></div>
-    <div class="game soon"><img src="assets/rampage.jpg" alt="Rampage" loading="lazy"><div><b>Rampage</b> <span class="pro soon">BALD</span><p>King of the Hill: die Mega-Rampe hoch, während LKWs herunterdonnern.</p></div></div>
-    <div class="game soon"><img src="assets/motochaos.jpg" alt="MotoChaos" loading="lazy"><div><b>MotoChaos</b> <span class="pro soon">BALD</span><p>Motorrad-Trial mit echter Physik, Trampolinen und Abwürfen.</p></div></div>
-    <div class="game soon"><img src="assets/support-spawni.jpg" alt="Support Spawni" loading="lazy"><div><b>Support Spawni</b> <span class="pro soon">BALD</span><p>3D-Jump'n'Run mit Spawni – Geschenke lassen seinen Kopf wachsen, bis er platzt.</p></div></div>
-    <div class="game soon"><img src="assets/get-coins.jpg" alt="Get Coins" loading="lazy"><div><b>Get Coins</b> <span class="pro soon">BALD</span><p>Der riesige Geldspeicher: Jede Münze ist ein TikTok-Coin.</p></div></div>
+    <div class="game soon"><img src="assets/ring-rivals.jpg" alt="Ring Rivals" loading="lazy"><div><b>Ring Rivals</b> <span class="pro soon">UPDATE</span><p>3D-Arcade-Wrestling mit elf Kämpfern, Combos und Specials – bekommt gerade ein großes Update.</p></div></div>
+    <div class="game soon"><img src="assets/tower-of-babel.jpg" alt="Tower of Babel" loading="lazy"><div><b>Tower of Babel</b> <span class="pro soon">BALD</span><p>Kletter den riesigen runden Turm hinauf – gebaut mit der Unreal Engine 5.</p></div></div>
+    <div class="game soon"><img src="assets/slide-chaos.jpg" alt="Slide Chaos" loading="lazy"><div><b>Slide Chaos</b> <span class="pro soon">BALD</span><p>Die Endlos-Wasserrutsche über das tropische Meer – Steilkurven, Spiralen und Tunnel.</p></div></div>
+    <div class="game soon"><img src="assets/step-up.jpg" alt="Step Up" loading="lazy"><div><b>Step Up</b> <span class="pro soon">BALD</span><p>Der riesige Kletter-Parcours vom Schrottplatz bis ins Wolkenreich, mit realistischer Grafik.</p></div></div>
+    <div class="game soon"><img src="assets/junk-hunt.jpg" alt="Junk Hunt" loading="lazy"><div><b>Junk Hunt</b> <span class="pro soon">BALD</span><p>Wimmelbild-Suche auf Müllkippe, Bahnhof und im Museum – der Chat hilft mit Rasterfeldern.</p></div></div>
+    <div class="game soon"><img src="assets/motochaos.jpg" alt="MotoChaos" loading="lazy"><div><b>MotoChaos</b> <span class="pro soon">BALD</span><p>Motorrad-Trial mit echter Physik, Loopings und beweglichen Hindernissen.</p></div></div>
+    <div class="game soon"><img src="assets/support-spawni.jpg" alt="Support Spawni" loading="lazy"><div><b>Support Spawni</b> <span class="pro soon">BALD</span><p>Jump'n'Run mit Spawni über eine Weltkarte durch 8 Level und 2 Welten.</p></div></div>
     <div class="game soon"><img src="assets/laufsteg.jpg" alt="V.I.P." loading="lazy"><div><b>V.I.P.</b> <span class="pro soon">BALD</span><p>Über den roten Teppich zum Helikopter – Fans, Hater und Paparazzi.</p></div></div>
-    <div class="game soon"><img src="assets/print-shop.jpg" alt="Print Shop" loading="lazy"><div><b>Print Shop</b> <span class="pro soon">BALD</span><p>Drucke die echten Profilbilder deiner Zuschauer – Müll oder Verkauf?</p></div></div>
-    <div class="game soon"><img src="assets/pool-chaos.jpg" alt="Pool Chaos" loading="lazy"><div><b>Pool Chaos</b> <span class="pro soon">BALD</span><p>Putz den total verdreckten Villen-Pool mit dem Hochdruckreiniger sauber.</p></div></div>
     <div class="game soon"><img src="assets/pyramiden-krieg.jpg" alt="Pyramiden-Krieg" loading="lazy"><div><b>Pyramiden-Krieg</b> <span class="pro soon">BALD</span><p>Verteidige deine Pyramide – gegen die KI oder bis zu 4 Streamer.</p></div></div>
   </div>
 </div></section>
 
 <section id="plaene"><div class="wrap">
-  <h2>Free, Pro & Gamer</h2><p class="sub">Herunterladen und Testen ist kostenlos. Alle Spiele gibt es im Abo – monatlich kündbar.</p>
+  <h2>Free, TikTok, Twitch & Gamer</h2><p class="sub">Herunterladen und Testen ist kostenlos. Für jede Plattform gibt es ein eigenes Abo, für beide zusammen das günstigere Bundle – monatlich kündbar.</p>
   <div class="plans">
-    <div class="card"><h3>Free</h3><ul><li>TikTok-Verbindung, Trigger und Simulator</li><li>Spawn- und Like-Overlay, Widgets</li><li>5 Aktionen, 5 Sounds und 30 Minuten Vorlesen pro Stream</li><li class="no">Wasserzeichen „powered by SeriousSpawns“</li><li>Gratis-Spiele: Dosenwerfen und Golden Feather</li><li class="no">Keine weiteren Spiele und Pro-Overlays</li></ul></div>
-    <div class="card pro-card"><h3>Pro <small>(TikTok Bundle)</small></h3><ul><li>Alles aus Free</li><li>Unbegrenzt Aktionen, Sounds und Vorlesen</li><li>Alle Spiele</li><li>Streamer vs Streamer</li><li>Multiplayer und Auto-Spawn</li><li>Bingo, Glücksrad, Geschenkbox und Trailer-Aufnahme</li><li>Timer, Speedrun, Steine, Wasser, Flammen und Top-Geschenk</li><li>Alles ohne Wasserzeichen</li><li>Neue Spiele zuerst</li></ul><div class="buy"><span class="price">14,99 € / Monat</span><a class="btn small" href="https://buy.polar.sh/polar_cl_xPzaBRHHnPfD041trYOkSK0gQA9dCOV5ZyadQ3xsLA2">Pro-Abo holen</a><a class="btn small ghost" href="https://buy.polar.sh/polar_cl_gyofM1SbZ32DaP9GlF5ucqw8JYCKXMzSuC4L42WLhT4">Jahresabo 149,99 € <span class="save">−16 %</span></a><small class="savetxt">Im Jahresabo sparst du 16 % gegenüber monatlich – nur 12,50 € im Monat.</small><small>Monatlich kündbar. Sichere Zahlung über Polar – den Schlüssel bekommst du sofort per E-Mail und fügst ihn im Programm unter „Pro“ ein.</small></div></div>
-    <div class="card"><h3>Gamer Bundle <span class="pro">NEU</span></h3><p>Für alle, die nur spielen wollen.</p><ul><li>Alle Spiele im Singleplayer und Multiplayer</li><li>Auto-Spawn in den Stufen Leicht, Mittel und Schwer</li><li>Test-Spawns in jedem Spiel</li><li class="no">Keine Streamer-Funktionen: keine TikTok-Verbindung, keine Overlays, kein Streamer vs Streamer</li></ul><div class="buy"><span class="price">6,99 € / Monat</span><a class="btn small" href="https://buy.polar.sh/polar_cl_VrspOkdQLNXDqE2gPUUF1nokOIQGerUC2xdWA4SFAl1">Monatsabo holen</a><a class="btn small ghost" href="https://buy.polar.sh/polar_cl_N7siWIjnahGFWtV35D4c75RaM8HxTddjGoYh419xALq">Jahresabo: 69,99 €</a></div></div>
+    <div class="card"><h3>Free</h3><ul><li>TikTok-Verbindung, Trigger und Simulator</li><li>Spawn- und Like-Overlay, Widgets</li><li>5 Aktionen, 5 Sounds und 30 Minuten Vorlesen pro Stream</li><li class="no">Wasserzeichen „powered by SeriousSpawns“</li><li>Gratis-Spiele: Dosenwerfen und Golden Feather</li><li class="no">Keine weiteren Spiele und Pro-Funktionen</li><li class="no">Kein Twitch</li></ul></div>
+    <div class="card pro-card"><h3>Pro <small>(TikTok Bundle)</small></h3><ul><li>Alles aus Free</li><li>Unbegrenzt Aktionen, Sounds und Vorlesen</li><li>Alle Spiele</li><li>Streamer vs Streamer</li><li>Multiplayer und Auto-Spawn</li><li>VTuber-Avatare, Voice Changer, Herzschlag, Bildschirm-Effekte und Kamera-Filter</li><li>Spawn-Glücksrad, Spawn-Kalender und Spawn-Laufband</li><li>Bingo, Glücksrad, Geschenkbox und Trailer-Aufnahme</li><li>Timer, Speedrun, Steine, Wasser, Flammen und Top-Geschenk</li><li>Alles ohne Wasserzeichen</li><li class="no">Twitch nicht enthalten</li></ul><div class="buy"><span class="price">14,99 € / Monat</span><a class="btn small" href="https://buy.polar.sh/polar_cl_xPzaBRHHnPfD041trYOkSK0gQA9dCOV5ZyadQ3xsLA2">Pro-Abo holen</a><a class="btn small ghost" href="https://buy.polar.sh/polar_cl_gyofM1SbZ32DaP9GlF5ucqw8JYCKXMzSuC4L42WLhT4">Jahresabo 149,99 € <span class="save">−16 %</span></a><small class="savetxt">Im Jahresabo sparst du 16 % gegenüber monatlich – nur 12,50 € im Monat.</small><small>Monatlich kündbar. Sichere Zahlung über Polar – den Schlüssel bekommst du sofort per E-Mail und fügst ihn im Programm unter „Pro“ ein.</small></div></div>
+    <div class="card tw-card"><h3>Twitch Bundle <span class="pro twp">NEU</span></h3><ul><li>Twitch-Verbindung: Bits, Abos, Follows, Raids, Chat und Kanalpunkte</li><li>Alle Spiele</li><li>Eigene Twitch-Overlays in Lila, Hauptoverlay auch im Querformat</li><li>VTuber-Avatare, Voice Changer, Herzschlag, Bildschirm-Effekte und Kamera-Filter</li><li>Alles ohne Wasserzeichen</li><li class="no">TikTok-Bereich und Streamer vs Streamer nicht enthalten</li></ul><div class="buy"><span class="price">14,99 € / Monat</span><a class="btn small twb" href="https://buy.polar.sh/polar_cl_FABZYwfkUGlCNOuP8p6fIt76pmiczawY4XZdb2VpMoL">Twitch-Abo holen</a><a class="btn small ghost twg" href="https://buy.polar.sh/polar_cl_7ysJV1cHtMXO3KO1k4haH2BdIv9iH3Y2QNZZ70bVy7v">Jahresabo 149,99 € <span class="save">−16 %</span></a><small>Monatlich kündbar. Sichere Zahlung über Polar – den Schlüssel bekommst du sofort per E-Mail.</small></div></div>
+    <div class="card duo-card"><h3>TikTok + Twitch Bundle <span class="pro new">NEU</span></h3><p>Beide Plattformen in einem Abo – 5 € im Monat günstiger als beide einzeln.</p><ul><li>Alles aus Pro (TikTok Bundle)</li><li>Alles aus dem Twitch Bundle</li><li>Jederzeit unten im Hauptmenü zwischen TikTok und Twitch wechseln</li></ul><div class="buy"><span class="price">24,99 € / Monat</span><a class="btn small" href="https://buy.polar.sh/polar_cl_eFtDN58SGFT6nRu7Ie5UlO6sTJxUSST003t5E2dDrnZ">Bundle holen</a><a class="btn small ghost" href="https://buy.polar.sh/polar_cl_e4dkgJ2Ms81fz2KYfVT6O51FPcarc5qU5UvAX4M15Y2">Jahresabo 249,99 € <span class="save">−16 %</span></a><small>Monatlich kündbar. Sichere Zahlung über Polar – den Schlüssel bekommst du sofort per E-Mail.</small></div></div>
+    <div class="card"><h3>Gamer Bundle</h3><p>Für alle, die nur spielen wollen.</p><ul><li>Alle Spiele im Singleplayer und Multiplayer</li><li>Auto-Spawn in den Stufen Leicht, Mittel und Schwer</li><li>Test-Spawns in jedem Spiel</li><li class="no">Keine Streamer-Funktionen: keine TikTok- oder Twitch-Verbindung, keine Overlays, kein Streamer vs Streamer</li></ul><div class="buy"><span class="price">6,99 € / Monat</span><a class="btn small" href="https://buy.polar.sh/polar_cl_VrspOkdQLNXDqE2gPUUF1nokOIQGerUC2xdWA4SFAl1">Monatsabo holen</a><a class="btn small ghost" href="https://buy.polar.sh/polar_cl_N7siWIjnahGFWtV35D4c75RaM8HxTddjGoYh419xALq">Jahresabo: 69,99 €</a></div></div>
   </div>
+  <p class="meta">Du kannst jederzeit zwischen den Abos wechseln – auch vom TikTok- oder Twitch-Abo ins Bundle.</p>
 </div></section>
 
 <section id="kauf"><div class="wrap">
   <h2>Fair kaufen</h2><p class="sub">Erst kostenlos testen, dann entscheiden.</p>
   <div class="grid">
     <div class="card"><div class="ic">🆓</div><h3>Gratis testen</h3><p>Die Free-Version läuft ohne Zeitlimit. So siehst du vor dem Kauf, ob alles mit deinem PC und deinem Live klappt.</p></div>
-    <div class="card"><div class="ic">↩️</div><h3>14 Tage Geld zurück</h3><p>Passt Pro doch nicht? Innerhalb von 14 Tagen nach dem Kauf erstatten wir den vollen Betrag – eine kurze E-Mail genügt.</p></div>
+    <div class="card"><div class="ic">↩️</div><h3>14 Tage Geld zurück</h3><p>Passt dein Abo doch nicht? Innerhalb von 14 Tagen nach dem Kauf erstatten wir den vollen Betrag – eine kurze E-Mail genügt.</p></div>
     <div class="card"><div class="ic">💬</div><h3>Support</h3><p>Fragen oder Probleme: <a href="mailto:support@seriousspawns.com">support@seriousspawns.com</a> oder direkt im Programm über „Fehlerbericht senden“. Antwort in der Regel innerhalb von 48 Stunden.</p></div>
   </div>
   <p class="meta">Abo monatlich oder jährlich, jederzeit zum Ende des Zeitraums kündbar. Details: <a href="agb.html">Kauf-, Abo- und Erstattungsbedingungen</a>.</p>
@@ -162,11 +215,11 @@
   <h2>So geht's</h2><p class="sub">In wenigen Minuten startklar – ein Assistent führt dich durch alles.</p>
   <ol class="steps">
     <li><b>Herunterladen & installieren</b><br><span style="color:var(--mute)">Meldet Windows „Computer geschützt“: „Weitere Informationen“ → „Trotzdem ausführen“.</span></li>
-    <li><b>TikTok-Namen eintragen</b><br><span style="color:var(--mute)">Ohne Passwort. Verbinden klappt, sobald du live bist.</span></li>
-    <li><b>Spiel wählen</b><br><span style="color:var(--mute)">Eingebautes Spiel anklicken – es startet in einem eigenen Fenster.</span></li>
-    <li><b>Overlay einbinden</b><br><span style="color:var(--mute)">Adresse kopieren, in OBS oder LIVE Studio einfügen.</span></li>
+    <li><b>TikTok oder Twitch verbinden</b><br><span style="color:var(--mute)">TikTok: nur deinen Namen eintragen, ohne Passwort. Twitch: einmal direkt bei Twitch anmelden.</span></li>
+    <li><b>Spiel wählen</b><br><span style="color:var(--mute)">Spiel installieren und starten – es läuft in einem eigenen Fenster.</span></li>
+    <li><b>Overlay einbinden</b><br><span style="color:var(--mute)">Adresse kopieren, in OBS oder LIVE Studio einfügen – oder die virtuelle Kamera nehmen.</span></li>
   </ol>
-  <p class="note" style="margin-top:22px">Hinweis: SeriousSpawns ist ein unabhängiges Projekt und nicht mit TikTok verbunden. Die Live-Verbindung nutzt eine inoffizielle Schnittstelle und kann kurz ausfallen, wenn TikTok etwas ändert.</p>
+  <p class="note" style="margin-top:22px">Hinweis: SeriousSpawns ist ein unabhängiges Projekt und nicht mit TikTok oder Twitch verbunden. Die TikTok-Verbindung nutzt eine inoffizielle Schnittstelle und kann kurz ausfallen, wenn TikTok etwas ändert. Twitch läuft über die offizielle Twitch-Schnittstelle.</p>
 </div></section>
 
 <section id="neu"><div class="wrap">
@@ -174,7 +227,7 @@
 </div></section>
 
 <section class="cta"><div class="wrap">
-  <h2>Gift it. Spawn it.</h2><p class="sub">Herunterladen, einrichten und im nächsten Live ausprobieren.</p>
+  <h2>Gift it. Spawn it.</h2><p class="sub">Herunterladen, einrichten und im nächsten Live ausprobieren – auf TikTok oder Twitch.</p>
   <a class="btn" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.5/SeriousSpawns-Setup-0.4.5.exe">⬇ SeriousSpawns 0.4.5 herunterladen</a>
 </div></section>
 
