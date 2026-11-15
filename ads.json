@@ -1,11 +1,45 @@
 {
-  "_hinweis": "Kleiner Werbebanner oben im Programm. Zum Vermieten nur diese Datei ändern (website/ads.json) und WEBSITE-VEROEFFENTLICHEN.bat ausführen – alle Nutzer sehen es innerhalb einer Stunde, ohne Update.",
-  "small": {
-    "logo": "https://seriousspawns.com/assets/logo.png",
-    "title": "SeriousSpawns Pro",
-    "text": "Alle Spiele · Streamer vs Streamer · ohne Wasserzeichen",
-    "cta": "Ansehen",
-    "url": "https://seriousspawns.com",
-    "color": "#ff2d55"
+  "_anleitung": [
+    "Werbeflächen oben rechts im Programm – getrennt für TikTok- und Twitch-Modus.",
+    "gross = große Fläche (340×76), klein = kleine Fläche darunter (340×40). null = nicht vermietet.",
+    "Buchung eintragen: unter tiktok bzw. twitch bei gross/klein die Felder ausfüllen (Vorlage: _beispiel kopieren). Bei TikTok + Twitch in beiden eintragen.",
+    "Felder: kunde (nur zur Übersicht) · bis (letzter Tag JJJJ-MM-TT, danach automatisch wieder eigene Werbung) · bild (fertiges Bannerbild, ersetzt Logo und Texte: groß 680×152, klein 680×80) · logo · titel · text · farbe (#rrggbb) · weblink (true = Weblink gebucht, nur dann klickbar) · url (nur https) · knopf (Knopftext).",
+    "Nicht vermietet: groß zeigt „Werbung – mich kann man mieten“, klein zeigt die eigene Werbung aus „eigen“.",
+    "Bilder des Kunden nach website/assets/ legen und als https://seriousspawns.com/assets/<datei> eintragen.",
+    "Für alle Nutzer: WEBSITE-VEROEFFENTLICHEN.bat ausführen – sichtbar innerhalb einer Stunde, ohne Update. Im Entwicklermodus (START-DEV) gilt diese Datei sofort."
+  ],
+  "eigen": {
+    "klein": {
+      "logo": "https://seriousspawns.com/assets/logo.png",
+      "titel": "SeriousSpawns Pro",
+      "text": "Alle Spiele · Streamer vs Streamer · ohne Wasserzeichen",
+      "textTwitch": "Alle Spiele · Studio ohne OBS",
+      "farbe": "#ff2d55",
+      "farbeTwitch": "#9146ff",
+      "weblink": true,
+      "url": "https://seriousspawns.com",
+      "knopf": "Ansehen"
+    },
+    "gross": null
+  },
+  "tiktok": {
+    "gross": null,
+    "klein": null
+  },
+  "twitch": {
+    "gross": null,
+    "klein": null
+  },
+  "_beispiel": {
+    "kunde": "Muster GmbH",
+    "bis": "2026-12-31",
+    "bild": "",
+    "logo": "https://seriousspawns.com/assets/kunde.png",
+    "titel": "Muster GmbH",
+    "text": "Dein Werbetext hier",
+    "farbe": "#25f4ee",
+    "weblink": true,
+    "url": "https://example.com",
+    "knopf": "Ansehen"
   }
 }
