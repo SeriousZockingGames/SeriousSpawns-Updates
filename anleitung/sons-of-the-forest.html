@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sons of the Forest – Anleitung · SeriousSpawns</title>
+<meta name="description" content="So richtest du die SeriousSpawns-Mod für Sons of the Forest ein – allein oder im Koop mit bis zu 4 Streamern. Jeder Streamer bekommt die Spawns seiner eigenen Community direkt vor sich.">
+<link rel="icon" href="../assets/favicon.png">
+<style>
+  @font-face { font-family:Bungee; src:url(../assets/bungee-latin-400-normal.ttf); font-display:swap }
+  @font-face { font-family:Chakra; src:url(../assets/chakra-petch-latin-700-normal.ttf); font-display:swap }
+  :root { --bg:#0b0b10; --panel:#14141c; --panel2:#191923; --line:#262634; --text:#ececf3; --mute:#9a9ab0; --red:#ff2d55; --cyan:#25f4ee; --ok:#3ddc84; --tw:#9146ff; --tw2:#bf94ff; --gold:#ffc61f; --blue:#3b8cff }
+  * { box-sizing:border-box }
+  html { scroll-behavior:smooth }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 "Segoe UI", system-ui, -apple-system, sans-serif }
+  a { color:var(--cyan) }
+  .wrap { max-width:980px; margin:0 auto; padding:0 20px }
+  nav { position:sticky; top:0; z-index:10; background:rgba(11,11,16,.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line) }
+  nav .wrap { display:flex; align-items:center; gap:14px; height:58px }
+  nav img { width:34px; height:34px; border-radius:9px }
+  nav b { font-family:Bungee, sans-serif; font-weight:400; font-size:17px } nav b span { color:var(--red) }
+  nav .grow { flex:1 } nav a.l { color:var(--mute); text-decoration:none; font-size:14px } nav a.l:hover { color:var(--text) }
+  header { padding:54px 0 30px; background:radial-gradient(600px 360px at 10% 10%, rgba(255,45,85,.2), transparent 70%), radial-gradient(520px 340px at 95% 90%, rgba(31,58,36,.55), transparent 70%) }
+  .kicker { font-family:Chakra, sans-serif; color:var(--cyan); letter-spacing:.14em; text-transform:uppercase; font-size:13px }
+  h1 { font-family:Bungee, sans-serif; font-weight:400; font-size:clamp(30px, 5vw, 50px); line-height:1.08; margin:8px 0 14px } h1 em { font-style:normal; color:var(--red) }
+  .lead { font-size:18px; color:#cfcfe0; max-width:720px; margin:0 }
+  h2 { font-family:Chakra, sans-serif; font-size:26px; margin:46px 0 6px; scroll-margin-top:70px } h2 .n { color:var(--red); margin-right:8px }
+  h3 { font-size:18px; margin:22px 0 6px }
+  .sub { color:var(--mute); margin:0 0 18px }
+  .toc { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px } .toc a { font-family:Chakra, sans-serif; font-size:13px; text-decoration:none; color:var(--text); border:1px solid var(--line); background:var(--panel); padding:6px 12px; border-radius:30px } .toc a:hover { border-color:var(--red) }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:14px 0 }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 } .grid2 .card, .grid3 .card { margin:0 } .grid3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px }
+  ol.steps { list-style:none; counter-reset:s; padding:0; margin:14px 0 }
+  ol.steps > li { counter-increment:s; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px 16px 64px; margin:10px 0; position:relative }
+  ol.steps > li::before { content:counter(s); position:absolute; left:18px; top:12px; font-family:Bungee, sans-serif; font-size:26px; color:var(--red) }
+  ol.steps > li > b:first-child { display:block; font-size:16.5px; margin-bottom:2px }
+  ul { padding-left:20px } li { margin:4px 0 }
+  .note { border-left:4px solid var(--cyan); background:rgba(37,244,238,.06); padding:12px 16px; border-radius:0 12px 12px 0; margin:14px 0 }
+  .warn { border-left-color:var(--gold); background:rgba(255,198,31,.07) }
+  .bad { border-left-color:var(--red); background:rgba(255,45,85,.07) }
+  .tag { font-family:Chakra, sans-serif; font-size:12px; border-radius:6px; padding:2px 8px; margin-left:4px; vertical-align:middle }
+  .t-pro { background:var(--red); color:#fff } .t-test { background:#2a2a38; color:var(--gold) } .t-new { background:var(--gold); color:#1a1400 }
+  code, kbd { font-family:Consolas, monospace; font-size:14px; background:#1e1e2a; border:1px solid var(--line); border-radius:6px; padding:1px 6px }
+  kbd { border-bottom-width:3px }
+  table { width:100%; border-collapse:collapse; font-size:15px } th, td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top } th { font-family:Chakra, sans-serif; color:var(--mute); font-size:13px; text-transform:uppercase; letter-spacing:.08em }
+  .elite { display:flex; gap:12px; flex-wrap:wrap } .elite div { flex:1; min-width:200px; border-radius:14px; padding:14px 16px; background:var(--panel2); border:1px solid var(--line) }
+  .e1 { box-shadow:inset 0 0 0 1px rgba(59,140,255,.6) } .e1 b { color:var(--blue) }
+  .e2 { box-shadow:inset 0 0 0 1px rgba(255,45,85,.6) } .e2 b { color:var(--red) }
+  .e3 { box-shadow:inset 0 0 0 1px rgba(255,198,31,.6) } .e3 b { color:var(--gold) }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 } .chips span { font-size:13.5px; border-radius:30px; padding:4px 11px; background:var(--panel2); border:1px solid var(--line) }
+  .chips.harm span { border-color:rgba(255,45,85,.45) } .chips.help span { border-color:rgba(61,220,132,.5) } .chips.mob span { border-color:rgba(255,198,31,.4) }
+  .koop { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; margin:18px 0 }
+  .koop .box { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px 16px; text-align:center }
+  .koop .box b { font-family:Chakra, sans-serif; font-size:17px } .koop .arrow { font-family:Bungee, sans-serif; color:var(--red); font-size:22px }
+  details { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin:8px 0 } details[open] { border-color:#3a3a4c }
+  summary { cursor:pointer; font-weight:700 } details p, details ul { margin:8px 0 2px; color:#d6d6e4 }
+  footer { border-top:1px solid var(--line); padding:26px 0; color:var(--mute); font-size:14px; margin-top:60px } footer a { color:var(--mute) }
+  @media (max-width:760px) { .grid2, .grid3 { grid-template-columns:1fr } .koop { grid-template-columns:1fr } .koop .arrow { transform:rotate(90deg); justify-self:center } }
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <img src="../assets/logo.png" alt=""><b>Serious<span>Spawns</span></b><div class="grow"></div>
+  <a class="l" href="../index.html">Startseite</a><a class="l" href="#probleme">Hilfe</a>
+</div></nav>
+
+<header><div class="wrap">
+  <div class="kicker">Mod-Anleitung · Pro</div>
+  <h1>Sons of the Forest <em>×</em> SeriousSpawns</h1>
+  <p class="lead">Deine Zuschauer schicken dir Kannibalen, Mutanten, Bosse und Chaos-Effekte direkt ins Spiel – mit ihrem Namen über dem Kopf. Allein oder im <b>Koop mit bis zu 4 Streamern</b>: Jeder bekommt genau die Spawns, die <b>seine eigene Community</b> in <b>seinem Stream</b> schickt – direkt vor sich.</p>
+  <div class="toc">
+    <a href="#voraussetzungen">1 · Voraussetzungen</a><a href="#installieren">2 · Installieren</a><a href="#spawns">3 · Spawns einrichten</a>
+    <a href="#koop">4 · Koop mit mehreren Streamern</a><a href="#elite">5 · Elite &amp; Superbabys</a><a href="#pause">6 · Pausen &amp; Schutz</a>
+    <a href="#liste">7 · Alle Spawns</a><a href="#extras">8 · Extras</a><a href="#probleme">9 · Probleme lösen</a>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <div class="note warn"><b>Hinweis:</b> Alle Fremdspiel-Mods sind in Entwicklung. Spielabstürze oder einzelne Fehler sind möglich. Sichere wichtige Spielstände vorher und melde Fehler über den Fehlerbericht in SeriousSpawns – so wird die Mod für alle besser.</div>
+
+  <!-- 1 -->
+  <h2 id="voraussetzungen"><span class="n">1</span>Voraussetzungen</h2>
+  <p class="sub">Das brauchst du – im Koop gilt das für <b>jeden</b> Streamer.</p>
+  <div class="grid2">
+    <div class="card"><b>✔ SeriousSpawns</b> mit <span class="tag t-pro">Pro</span>-Abo (TikTok, Twitch oder Bundle)<br><span style="color:var(--mute)">Der Reiter <b>Mods</b> ist in jedem Pro-Abo enthalten.</span></div>
+    <div class="card"><b>✔ Sons of the Forest</b> über Steam auf dem PC installiert<br><span style="color:var(--mute)">Die Mod funktioniert nur mit der Steam-Version.</span></div>
+    <div class="card"><b>✔ Windows-PC mit Internet</b><br><span style="color:var(--mute)">Im Koop verbinden sich die Mods über seriousspawns.com.</span></div>
+    <div class="card"><b>✔ Keine anderen Spawn-Mods</b><br><span style="color:var(--mute)">Stream to Earn, Crowd Control o. Ä. deaktiviert SeriousSpawns beim Installieren automatisch (nichts wird gelöscht).</span></div>
+  </div>
+
+  <!-- 2 -->
+  <h2 id="installieren"><span class="n">2</span>Mod installieren</h2>
+  <p class="sub">Einmalig, dauert ca. 5 Minuten.</p>
+  <ol class="steps">
+    <li><b>Reiter „Mods“ öffnen</b>Öffne SeriousSpawns und klicke links auf <b>Mods</b>. Wähle die Kachel <b>Sons of the Forest</b>.</li>
+    <li><b>Spielordner finden lassen</b>Klicke auf <b>Automatisch suchen</b>. Wird nichts gefunden, klicke auf <b>SOTF-Ordner…</b> und wähle den Ordner, in dem <code>SonsOfTheForest.exe</code> liegt (meist <code>C:\Program Files (x86)\Steam\steamapps\common\Sons Of The Forest</code>).</li>
+    <li><b>„Installieren“ drücken</b>SeriousSpawns lädt dabei das Mod-Werkzeug <b>BepInEx</b>, falls es fehlt, und kopiert die SeriousSpawns-Mod ins Spiel. Alle drei Häkchen in der Kachel werden grün.</li>
+    <li><b>Spiel einmal starten</b>Klicke auf <b>▶ Starten</b>. <b>Beim allerersten Start</b> bereitet BepInEx das Spiel vor – das dauert 1–3 Minuten und es erscheint ein schwarzes Konsolenfenster. Das ist normal, einfach warten.</li>
+    <li><b>Spielstand laden</b>Sobald du im Spiel bist, erscheint oben in der Mitte <b>„SeriousSpawns bereit“</b>. Klicke in der Mod-Kachel auf <b>Verbindung testen</b> – dort steht dann „Verbunden (Mod v…)“.</li>
+  </ol>
+  <div class="note">Updates der Mod spielt SeriousSpawns automatisch ein, sobald das Spiel geschlossen ist. Du musst nichts erneut installieren.</div>
+
+  <!-- 3 -->
+  <h2 id="spawns"><span class="n">3</span>Spawns einrichten</h2>
+  <p class="sub">Genau wie bei allen SeriousSpawns-Spielen.</p>
+  <ol class="steps">
+    <li><b>Mod aktivieren</b>Klicke in der Kachel auf <b>Aktivieren</b>. Ab jetzt gehen deine Auslöser an Sons of the Forest.</li>
+    <li><b>Auslöser anlegen</b>Lege fest, was welches Geschenk, wie viele Likes, Follows, Bits, Subs oder welcher Chat-Befehl auslöst – z. B. <i>Rose → zufälliger Gegner</i>, <i>ab 99 Diamanten → Kannibalen-Horde</i>. Ein paar sinnvolle Regeln sind schon voreingestellt.</li>
+    <li><b>Testen</b>Mit den <b>Test-Spawns</b> prüfst du jeden Spawn sofort. Test-Spawns tragen den Namen <b>@seriousspawns.com</b>.</li>
+    <li><b>Einstellungen anpassen</b> (optional)
+      <table style="margin-top:8px">
+        <tr><th>Einstellung</th><th>Bedeutung</th></tr>
+        <tr><td>Max. gleichzeitig geschickte Gegner pro Streamer</td><td>So viele deiner Spawns leben gleichzeitig (Standard 50, bis 120). Im Koop hat <b>jeder Streamer seine eigenen 50</b>. Kommen mehr, werden gleiche Spawns zu <b>Elite-Gegnern</b> gebündelt – <b>nichts verfällt</b>.</td></tr>
+        <tr><td>Abstand zwischen Spawns</td><td>Pause zwischen zwei Spawns in Millisekunden (Standard 700).</td></tr>
+        <tr><td>Spawn-Abstand</td><td>Wie weit vor dir Gegner erscheinen (0 = automatisch, direkt vor dir).</td></tr>
+        <tr><td>Elite-Bündeln ab …</td><td>Ab so vielen wartenden Spawns werden gleiche Gegner zu Elite-Gegnern zusammengelegt (Standard 20, gezählt <b>pro Streamer</b>).</td></tr>
+        <tr><td>Superbabys ab …</td><td>Ab so vielen Mutanten-Babys werden sie gestapelt (Standard 6).</td></tr>
+        <tr><td>Zuschauernamen / Meldungen / Schild</td><td>Namen über den Gegnern, Meldungen oben, „Spawns paused“-Schild – jeweils an/aus.</td></tr>
+        <tr><td>Geschickte Gegner nach deinem Tod entfernen</td><td>Nach deinem Tod verschwinden deine Spawns (Standard an).</td></tr>
+      </table>
+    </li>
+  </ol>
+  <div class="note">Über jedem Gegner steht der <b>Anzeigename</b> des Zuschauers (ohne @). Die Linie darunter zeigt die Herkunft: <b style="color:var(--red)">rot = TikTok</b>, <b style="color:var(--tw2)">lila = Twitch</b>. Darunter siehst du den <b>Lebensbalken</b>.</div>
+
+  <!-- 4 -->
+  <h2 id="koop"><span class="n">4</span>Koop mit mehreren Streamern <span class="tag t-new">Neu</span></h2>
+  <p class="sub">Bis zu 4 Streamer in einer Welt – jeder mit seiner eigenen Community.</p>
+
+  <div class="koop">
+    <div class="box"><b>Deine Community</b><br><span style="color:var(--mute)">schickt Geschenke in <b>deinem</b> Stream</span></div>
+    <div class="arrow">→</div>
+    <div class="box"><b>Dein Gegner</b><br><span style="color:var(--mute)">erscheint <b>direkt vor dir</b> und jagt <b>nur dich</b></span></div>
+  </div>
+
+  <h3>So funktioniert es</h3>
+  <ul>
+    <li>In Sons of the Forest darf im Multiplayer nur der <b>Host</b> (wer die Welt eröffnet) Gegner erzeugen. Deshalb schalten andere Spawn-Mods den Koop einfach ab.</li>
+    <li>SeriousSpawns löst das: Die Mod jedes Gasts schickt die Spawns seiner Zuschauer über seriousspawns.com an die Mod des Hosts. Der Host erzeugt den Gegner <b>direkt vor dem Gast</b> – und beide sehen ihn.</li>
+    <li>Die Mods finden sich <b>automatisch</b> über die Steam-Lobby. Es gibt keinen Raum-Code und nichts einzustellen.</li>
+  </ul>
+
+  <h3>Einrichten – Schritt für Schritt</h3>
+  <ol class="steps">
+    <li><b>Jeder installiert die Mod</b>Alle Streamer führen <a href="#installieren">Schritt 2</a> bei sich aus – auch die Gäste. Ohne Mod kommen die Spawns eines Streamers nicht an.</li>
+    <li><b>Jeder richtet seine eigenen Auslöser ein</b>Jeder Streamer startet sein eigenes SeriousSpawns, verbindet <b>seinen</b> TikTok-Live bzw. Twitch-Stream und aktiviert die Mod. Die Auslöser können bei jedem anders sein.</li>
+    <li><b>Host eröffnet die Welt</b>Ein Streamer startet Sons of the Forest und lädt einen Multiplayer-Spielstand (oder erstellt ein neues Multiplayer-Spiel).</li>
+    <li><b>Gäste treten bei</b>Die anderen treten wie gewohnt über das Spielmenü bzw. die Steam-Einladung bei.</li>
+    <li><b>Verbindung prüfen</b>Unten in der Bildmitte steht bei allen <b>„KOOP · Host/Gast · 2 Streamer verbunden“</b> (bzw. 3 oder 4). Steht dort „verbinde …“, warte ein paar Sekunden.</li>
+    <li><b>Testen</b>Jeder schickt einen Test-Spawn aus seinem SeriousSpawns. Der Gegner muss <b>vor dem Streamer erscheinen, der ihn geschickt hat</b> – mit „@seriousspawns.com“ über dem Kopf.</li>
+  </ol>
+
+  <h3>Was jeder Streamer bekommt</h3>
+  <div class="grid2">
+    <div class="card"><b>👹 Gegner &amp; Horden</b><br>erscheinen <b>direkt vor dir</b> (6–8 m, in Blickrichtung) und greifen <b>nur dich</b> an. „Gegner hinter dir“ kommt wirklich von hinten.</div>
+    <div class="card"><b>🏷 Namen &amp; Lebensbalken</b><br>siehst du auf <b>deinem</b> Bildschirm für <b>deine</b> Spawns – also auch im Stream deiner Zuschauer.</div>
+    <div class="card"><b>⚖ Fair geteilt</b><br>Jeder hat sein <b>eigenes Kontingent</b> von bis zu <b>50 gleichzeitigen Gegnern</b> – zu viert also bis zu 200 auf der Insel. Die Warteschlange wechselt zwischen den Streamern ab – ein großer Chat blockiert die anderen nie.</div>
+    <div class="card"><b>⭐ Eigene Elite-Gegner</b><br>Gebündelt wird <b>nur innerhalb deiner Community</b>. Zuschauer verschiedener Streamer landen nie im selben Elite-Gegner.</div>
+    <div class="card"><b>💚 Effekte für dich</b><br>Heilen, Rage Mode, Supersprung, Turbo, Unsichtbar, Fake-Tod, Entführung, Geschenke, Tunnelblick &amp; Co. wirken <b>nur bei dir</b>.</div>
+    <div class="card"><b>🌍 Effekte für die Welt</b><br>Nacht/Tag, Jahreszeiten, Unwetter, „ganze Insel wütend“ betreffen die ganze Welt – also alle Spieler.</div>
+  </div>
+
+  <h3>Gut zu wissen</h3>
+  <ul>
+    <li><b>Der Host muss im Spiel bleiben.</b> Verlässt er die Welt, endet der Koop für alle.</li>
+    <li>Ist der <b>Host im Menü oder tot</b>, kommen die Spawns der Gäste trotzdem weiter.</li>
+    <li>Bist <b>du</b> im Menü, in einer Zwischensequenz, im Ladebildschirm oder tot, <b>warten deine</b> Spawns und kommen danach automatisch.</li>
+    <li>Fotoshooting und Spawn-Prüfung (<kbd>F8</kbd>) gehen nur beim Host bzw. im Einzelspieler.</li>
+    <li>Wins/Minus-Wins, Death Counter und Speedrun-Timer zählt jedes SeriousSpawns für seinen eigenen Streamer.</li>
+  </ul>
+
+  <!-- 5 -->
+  <h2 id="elite"><span class="n">5</span>Elite-Gegner &amp; Superbabys</h2>
+  <p class="sub">Pro Streamer leben bis zu <b>50 geschickte Gegner</b> gleichzeitig. Viele Geschenke auf einmal? Statt einer endlosen Warteschlange werden gleiche Spawns zu starken Gegnern gebündelt – man sieht es sofort an Farbe und Leuchten.</p>
+  <div class="elite">
+    <div class="e1"><b>PHANTOM · blau</b><br>2–3 Spawns. Springt aus der Ferne direkt zu dir.</div>
+    <div class="e2"><b>BERSERKER · rot</b><br>4–6 Spawns. Schneller, sein Wutschrei wirft dich um.</div>
+    <div class="e3"><b>PANZER · gold</b><br>7–10 Spawns. Gepanzert, viel Leben, Erdstoß in deiner Nähe.</div>
+  </div>
+  <p>Über dem Elite-Gegner stehen alle Zuschauer, die darin stecken („Lisa, Tom, Max +3“). <b>Mutanten-Babys</b> drücken in großer Zahl die FPS – deshalb werden sie zu bis zu 1 m großen <b>Superbabys</b> gestapelt (Sprung-, Wut- und Panzerbaby), weitere Babys lassen sie wachsen. <b>Nachts</b> kommen alle Spawns eine Elite-Stufe stärker. <b>Bosse</b> werden nie gebündelt – sie kommen echt und mehrfach.</p>
+  <p>Tote Spawns verschwinden nach wenigen Sekunden, damit sofort Platz für Nachschub ist – endlose Horden ohne Leichenberge.</p>
+
+  <!-- 6 -->
+  <h2 id="pause"><span class="n">6</span>Pausen &amp; Story-Schutz</h2>
+  <ul>
+    <li>Im <b>Pausenmenü, Ladebildschirm, in Zwischensequenzen und nach deinem Tod</b> kommen keine Spawns. Deine Zuschauer sehen ein flimmerndes Schild <b>„SPAWNS PAUSED“</b> mit der Zahl der wartenden Spawns. Danach geht es automatisch weiter.</li>
+    <li><b>Kelvin, Virginia, Timmy und der Endboss</b> werden von Effekten wie Blitz, Feuer, Stromschlag oder ONE SHOT nie getroffen – deine Story bleibt sicher.</li>
+    <li>Gegner, die das Spiel selbst erzeugt, und deren Leichen werden nie entfernt.</li>
+  </ul>
+
+  <!-- 7 -->
+  <h2 id="liste"><span class="n">7</span>Alle Spawns</h2>
+  <h3>Gegner</h3>
+  <div class="chips mob"><span>Zufälliger Gegner</span><span>Kannibale (zufällig)</span><span>Mutant (zufällig)</span><span>Kannibale</span><span>Kannibalen-Anführer</span><span>Goldmaske</span><span>Gesichtsloser</span><span>Bemalte Kannibalen</span><span>Schlamm-Kannibalen</span><span>Dicke Kannibalen</span><span>Fingers</span><span>Twins</span><span>Armsy</span><span>Legsy</span><span>Holey</span><span>Mr. &amp; Mrs. Puffton</span><span>Mutanten-Baby</span><span>Superbaby</span><span>Dämon</span><span>Dämonen-Boss</span><span>Puffy-Boss</span><span>Puffy-Bossin</span><span>Endboss</span></div>
+  <h3>Tiere</h3>
+  <div class="chips mob"><span>Elch</span><span>Hirsch</span><span>Waschbär</span><span>Stinktier</span><span>Fledermaus</span><span>Adler</span><span>Möwe</span><span>Hase</span><span>Eichhörnchen</span><span>Hai (Wasser)</span><span>Orca (Wasser)</span></div>
+  <h3>⚡ Gegen dich</h3>
+  <div class="chips harm"><span>Kannibalen-Horde</span><span>Mutanten-Horde</span><span>Kannibalen-Überfall</span><span>Creepy-Party</span><span>Boss-Rush</span><span>Random-Gegner-Chaos</span><span>Riesen-Gegner</span><span>Mini-Gegner</span><span>Gegner hinter dir</span><span>Gegner herholen</span><span>Get-Serious-Horror</span><span>Ganze Insel wütend</span><span>Alle gepanzert</span><span>Fake-Tod</span><span>Fake-Ertrinken</span><span>Stinktier-Gestank</span><span>Tunnelblick</span><span>Blutrote Sicht</span><span>Gegenstand geklaut</span><span>Entführung</span><span>Baum fällt</span><span>Winter</span><span>Herbst</span><span>Nacht</span><span>Unwetter</span><span>Zeitraffer</span><span>Schaden</span><span>Umgehauen</span></div>
+  <h3>💚 Für dich</h3>
+  <div class="chips help"><span>SERIOUS RAGE MODE</span><span>ONE SHOT</span><span>Blitzschlag</span><span>Stromschlag-Welle</span><span>Feuerring</span><span>Gegner zerplatzen</span><span>Gegner erstarren</span><span>Gegner brennen</span><span>Geschickte Gegner sterben</span><span>Geschickte Gegner weg</span><span>Voll heilen</span><span>Ausrüstung geschenkt</span><span>Kelvin bringt dir was</span><span>Kelvin-Klon</span><span>Virginia</span><span>Zeitlupe</span><span>Tag</span><span>Sommer</span><span>Frühling</span><span>Supersprung</span><span>Turbo-Rennen</span><span>Unsichtbar</span></div>
+  <div class="note">Ausgegraute Spawns in SeriousSpawns kennt deine Spielversion noch nicht – sie werden freigeschaltet, sobald die Mod sie im Spiel findet. Spawns mit <span class="tag t-test">🧪 Test</span> sind neu und werden gerade erprobt.</div>
+
+  <!-- 8 -->
+  <h2 id="extras"><span class="n">8</span>Extras</h2>
+  <div class="grid2">
+    <div class="card"><b>📸 Kachelbilder</b><br>Für Spawn-Kacheln, Glücksrad &amp; Co.: Im Spiel auf eine freie, ebene Fläche schauen, Spiel im <b>randlosen Fenster</b> und in der Mod-Kachel auf <b>„📸 Kachelbilder aufnehmen“</b> klicken. Jeder Gegner wird kurz vor die Kamera gestellt und fotografiert (1–2 Minuten, nicht bewegen).</div>
+    <div class="card"><b>🔁 Spawn-Prüfung</b><br>Drücke im Spiel <kbd>F8</kbd>: Jede Gegnerart wird einmal geholt und geprüft – mit Prozentanzeige und Restzeit. <kbd>F8</kbd> noch einmal bricht ab.</div>
+    <div class="card"><b>💀 Death Counter &amp; Speedrun</b><br>Deine Tode im Spiel zählen automatisch – per Haken mit Death Counter und Speedrun-Timer in SeriousSpawns koppelbar.</div>
+    <div class="card"><b>🧹 Alle Gegner weg</b><br>Der Knopf in der Mod-Kachel entfernt alle <b>deine</b> geschickten Gegner und leert deine Warteschlange.</div>
+  </div>
+
+  <!-- 9 -->
+  <h2 id="probleme"><span class="n">9</span>Probleme lösen</h2>
+  <details><summary>Oben erscheint kein „SeriousSpawns bereit“</summary><ul>
+    <li>Sind in der Mod-Kachel alle drei Häkchen grün? Sonst <b>Installieren</b> drücken.</li>
+    <li>Beim allerersten Start nach der Installation braucht BepInEx 1–3 Minuten – Spiel ggf. noch einmal starten.</li>
+    <li>Die Meldung kommt erst, wenn ein <b>Spielstand geladen</b> ist, nicht im Hauptmenü.</li></ul></details>
+  <details><summary>„Verbindung testen“ sagt „Spiel ist nicht gestartet“</summary><p>Das Spiel muss laufen und ein Spielstand geladen sein. Prüfe, ob in der Kachel der richtige Spielordner steht.</p></details>
+  <details><summary>Spawns kommen nicht – das Schild „SPAWNS PAUSED“ ist zu sehen</summary><p>Das ist Absicht: Du bist im Menü, im Ladebildschirm, in einer Zwischensequenz oder gerade gestorben. Die Spawns warten und kommen danach automatisch.</p></details>
+  <details><summary>Schild „NO SPAWNS IN THIS AREA“</summary><p>An dieser Stelle konnte das Spiel 12 Sekunden lang keinen Gegner erzeugen (z. B. in manchen Höhlen oder Story-Bereichen). Geh ein Stück weiter – die Spawns kommen dann von selbst.</p></details>
+  <details><summary>Koop: unten steht „verbinde …“</summary><ul>
+    <li>Der PC braucht Internet. Prüfe, ob eine Firewall oder ein Virenscanner das Spiel blockiert.</li>
+    <li>Die Verbindung wird alle 5 Sekunden neu versucht – kurz warten.</li>
+    <li>Alle müssen in <b>derselben</b> Multiplayer-Welt sein.</li></ul></details>
+  <details><summary>Koop: die Spawns eines Gasts kommen nicht an</summary><ul>
+    <li>Hat der Gast die Mod installiert? (Kachel: alle drei Häkchen grün)</li>
+    <li>Steht beim Gast unten „KOOP · Gast · … verbunden“?</li>
+    <li>Ist die Mod im SeriousSpawns des Gasts <b>aktiviert</b>?</li>
+    <li>Ist der Gast gerade im Menü oder tot? Dann warten seine Spawns.</li></ul></details>
+  <details><summary>Gegner erscheinen doppelt</summary><p>Eine andere Spawn-Mod (z. B. Stream to Earn) ist noch aktiv. Drücke in der Kachel noch einmal <b>Installieren</b> – SeriousSpawns verschiebt fremde Spawn-Mods sicher in den Ordner <code>_deaktiviert</code>.</p></details>
+  <details><summary>Das Spiel ruckelt bei sehr vielen Spawns</summary><p>Senke „Max. gleichzeitig geschickte Gegner“ oder „Elite-Bündeln ab …“. Dann werden Spawns früher zu Elite-Gegnern zusammengelegt – gleicher Spaß, weniger Figuren. Im Koop gilt die Zahl <b>pro Streamer</b> – zu viert sind es bei 50 bis zu 200 Gegner. Auf schwächeren PCs oder im vollen Koop sind 25–30 ein guter Startwert; der Host-PC trägt die meiste Last.</p></details>
+  <details><summary>Das Spiel ist abgestürzt</summary><p>Schicke bitte in SeriousSpawns einen <b>Fehlerbericht</b>. Die Mod schreibt ein Protokoll mit, das bei der Fehlersuche hilft. Die Mod verändert keine Spielstand-Dateien.</p></details>
+  <p style="margin-top:22px">Noch Fragen? Schreib uns: <a href="mailto:seriouszocking.games@gmail.com">seriouszocking.games@gmail.com</a></p>
+</main>
+
+<footer><div class="wrap">
+  © SeriousSpawns by SeriousZocking · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a> · <a href="../agb.html">AGB</a><br>
+  Sons of the Forest ist eine Marke von Endnight Games. SeriousSpawns ist ein unabhängiges Fan-Projekt und steht in keiner Verbindung zu Endnight Games.
+</div></footer>
+</body>
+</html>
