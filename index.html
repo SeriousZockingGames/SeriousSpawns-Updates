@@ -72,12 +72,36 @@
     .grid, .games { grid-template-columns:1fr 1fr } ol.steps { grid-template-columns:1fr 1fr } nav a.l { display:none } .twlist { grid-template-columns:1fr }
   }
   @media (max-width:520px) { .grid, .games, ol.steps { grid-template-columns:1fr } .plans { grid-template-columns:1fr } }
+
+  /* Founder-Konsole + Katalog-Slideshow */
+  nav a.l.kon { color:#ff8fa5 }
+  .kon-sec { scroll-margin-top:62px; background:radial-gradient(700px 400px at 20% 20%, rgba(179,18,42,.28), transparent 70%), radial-gradient(600px 360px at 85% 85%, rgba(127,216,255,.12), transparent 70%) }
+  .kon-sec h2 span { color:#7fd8ff }
+  .slides { position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--line); background:#121016; box-shadow:0 20px 60px rgba(0,0,0,.5) }
+  .slides .track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none }
+  .slides .track::-webkit-scrollbar { display:none }
+  .slides .track img { flex:0 0 100%; width:100%; aspect-ratio:1123/794; object-fit:cover; display:block; scroll-snap-align:center; user-select:none; -webkit-user-drag:none }
+  .slides .nav-b { position:absolute; top:50%; transform:translateY(-50%); width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(11,11,16,.7); color:#fff; font-size:22px; cursor:pointer; display:grid; place-items:center }
+  .slides .nav-b:hover { background:rgba(179,18,42,.9) } .slides .prev { left:12px } .slides .next { right:12px }
+  .dots { display:flex; justify-content:center; gap:8px; margin:14px 0 0 }
+  .dots button { width:10px; height:10px; border-radius:50%; border:0; padding:0; background:#3a3541; cursor:pointer } .dots button.on { background:#7fd8ff; width:26px; border-radius:6px }
+  .kon-grid { display:grid; grid-template-columns:1.55fr 1fr; gap:26px; align-items:start; margin-top:8px }
+  .founder-box { background:linear-gradient(160deg,#5c0815,#2a0710 70%); border:1px solid rgba(255,45,85,.45); border-radius:18px; padding:26px }
+  .founder-box .fk { font-family:Chakra, sans-serif; letter-spacing:.16em; color:#ffd3da; font-size:13px }
+  .founder-box .fp { font-family:Bungee, sans-serif; font-size:46px; line-height:1.1; margin:6px 0 2px }
+  .founder-box ul { margin:14px 0 18px; padding-left:20px; color:#eadde1 } .founder-box li { margin:6px 0 }
+  .stock { display:flex; align-items:center; gap:10px; background:#121016; border-radius:10px; padding:10px 14px; font-weight:700 }
+  .stock .bar { flex:1; height:8px; border-radius:6px; background:#2e2a35; overflow:hidden } .stock .bar i { display:block; height:100%; background:linear-gradient(90deg,#7fd8ff,#25f4ee); width:100% }
+  .btn.ppb { background:#ffc439; color:#111; box-shadow:0 8px 28px rgba(255,196,57,.3); margin-top:16px; width:100%; justify-content:center; font-size:17px }
+  .btn.ppb.off { background:#3a3541; color:#9a9ab0; box-shadow:none; pointer-events:none }
+  .founder-box small { display:block; color:#c9b6bd; margin-top:10px; font-size:13px; line-height:1.5 }
+  @media (max-width:820px) { .kon-grid { grid-template-columns:1fr } .slides .nav-b { width:38px; height:38px; font-size:18px } }
 </style>
 </head>
 <body>
 <nav><div class="wrap">
   <img src="assets/logo.png" alt=""><b>Serious<span>Spawns</span></b><span class="grow"></span>
-  <a class="l" href="#features">Funktionen</a><a class="l tw" href="#twitch">Twitch</a><a class="l" href="#spiele">Spiele</a><a class="l" href="#plaene">Abos</a><a class="l" href="#kauf">Kauf &amp; Support</a> <a class="l" href="#start">So geht's</a>
+  <a class="l kon" href="#konsole">Konsole</a><a class="l" href="#features">Funktionen</a><a class="l tw" href="#twitch">Twitch</a><a class="l" href="#spiele">Spiele</a><a class="l" href="#plaene">Abos</a><a class="l" href="#kauf">Kauf &amp; Support</a> <a class="l" href="#start">So geht's</a>
   <a class="btn small" href="https://github.com/SeriousZockingGames/SeriousSpawns-Updates/releases/download/v0.4.6/SeriousSpawns-Setup-0.4.6.exe">⬇ Download</a>
 </div></nav>
 
@@ -188,6 +212,72 @@
     <div class="game soon"><img src="assets/pyramiden-krieg.jpg" alt="Pyramiden-Krieg" loading="lazy"><div><b>Pyramiden-Krieg</b> <span class="pro soon">BALD</span><p>Verteidige deine Pyramide – gegen die KI oder bis zu 4 Streamer.</p></div></div>
   </div>
 </div></section>
+
+<section id="konsole" class="kon-sec"><div class="wrap">
+  <div class="kicker">Neu · Founder Edition</div>
+  <h2>Die SeriousZocken <span>Konsole</span></h2>
+  <p class="sub">Die Spielekonsole mit Kamera, die deinen Körper zum Controller macht – für Gaming, Livestreams und Lernspiele im Wohnzimmer. Blättere durch den Katalog.</p>
+  <div class="kon-grid">
+    <div>
+      <div class="slides" id="katalog" aria-roledescription="Slideshow" aria-label="Produktkatalog">
+        <div class="track" tabindex="0">
+          <img src="assets/katalog/katalog-01.jpg" alt="Titel: Bewegen statt drücken – SeriousZocken Konsole, Founder Edition 999 €" loading="lazy">
+          <img src="assets/katalog/katalog-02.jpg" alt="Das Produkt: eine Kamera auf dem TV, die Konsole dahinter" loading="lazy">
+          <img src="assets/katalog/katalog-03.jpg" alt="Features: Bewegungs-Gaming, Livestreaming, Kinder-Lernspiele, Controller und Bluetooth" loading="lazy">
+          <img src="assets/katalog/katalog-04.jpg" alt="Spiele zum Start: Strike Chaos, Putt Chaos, Go-Karts, Breaking Bonbon" loading="lazy">
+          <img src="assets/katalog/katalog-05.jpg" alt="Zwei Betriebsarten: hinter dem TV hängen oder auf den Tisch klappen" loading="lazy">
+          <img src="assets/katalog/katalog-06.jpg" alt="Technik: die Konsole im Detail" loading="lazy">
+          <img src="assets/katalog/katalog-07.jpg" alt="Founder Edition: 999 €, 50 nummerierte und signierte Konsolen, Fahrplan" loading="lazy">
+        </div>
+        <button class="nav-b prev" type="button" aria-label="Vorherige Seite">‹</button>
+        <button class="nav-b next" type="button" aria-label="Nächste Seite">›</button>
+      </div>
+      <div class="dots" id="katalog-dots"></div>
+      <p class="meta" style="text-align:center">Wischen oder Pfeile nutzen · <a href="assets/katalog/SeriousZocken_Katalog_Founder.pdf">Katalog als PDF</a></p>
+    </div>
+    <div class="founder-box">
+      <div class="fk">FOUNDER EDITION</div>
+      <div class="fp">999 €</div>
+      <div style="color:#ffd3da">Founder-Preis · nur 50 Stück</div>
+      <ul>
+        <li>Komplette Konsole mit Full-HD-Low-Light-Kamera</li>
+        <li>Zum Start: Strike Chaos, Putt Chaos, Go-Karts, Breaking Bonbon</li>
+        <li><b>Lifetime-Spiele-Abo gratis</b> – auch alle künftigen Spiele</li>
+        <li><b>Nummeriert und signiert</b> (Nr. 1–50) mit persönlicher Widmung</li>
+      </ul>
+      <div class="stock"><span id="founder-rest">50 von 50 frei</span><span class="bar"><i id="founder-bar"></i></span></div>
+      <a class="btn ppb" id="founder-buy" href="#" target="_blank" rel="noopener">Jetzt Founder werden – mit PayPal</a>
+      <small>Preis inkl. Versand. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.<br>Crowdfunding-Start Frühjahr 2027 · Auslieferung geplant Mitte 2027. Abbildungen zeigen Renderings des Prototyps.</small>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){
+  var box=document.getElementById('katalog'); if(!box) return;
+  var tr=box.querySelector('.track'), imgs=tr.querySelectorAll('img'), dots=document.getElementById('katalog-dots'), cur=0, timer=null;
+  imgs.forEach(function(_,i){ var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Seite '+(i+1)); b.onclick=function(){ go(i); stop(); }; dots.appendChild(b); });
+  function go(i){ cur=(i+imgs.length)%imgs.length; tr.scrollTo({left:cur*tr.clientWidth, behavior:'smooth'}); mark(); }
+  function mark(){ [].forEach.call(dots.children,function(d,i){ d.className=i===cur?'on':''; }); }
+  tr.addEventListener('scroll',function(){ var i=Math.round(tr.scrollLeft/tr.clientWidth); if(i!==cur){ cur=i; mark(); } },{passive:true});
+  box.querySelector('.prev').onclick=function(){ go(cur-1); stop(); };
+  box.querySelector('.next').onclick=function(){ go(cur+1); stop(); };
+  tr.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){ go(cur+1); stop(); } if(e.key==='ArrowLeft'){ go(cur-1); stop(); } });
+  ['touchstart','pointerdown','wheel'].forEach(function(ev){ tr.addEventListener(ev,stop,{passive:true}); });
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches) timer=setInterval(function(){ go(cur+1); },6000);
+  window.addEventListener('resize',function(){ tr.scrollLeft=cur*tr.clientWidth; });
+  mark();
+  // Restmenge + PayPal-Link aus founder.json (dort nach jedem Verkauf "verkauft" hochzählen)
+  fetch('founder.json?'+Date.now()).then(function(r){ return r.json(); }).then(function(f){
+    var ges=f.gesamt||50, rest=Math.max(0,ges-(f.verkauft||0)), btn=document.getElementById('founder-buy');
+    document.getElementById('founder-rest').textContent = rest ? (rest+' von '+ges+' frei') : 'Ausverkauft';
+    document.getElementById('founder-bar').style.width=(rest/ges*100)+'%';
+    if(!rest){ btn.textContent='Alle 50 Founder-Konsolen sind vergeben'; btn.classList.add('off'); }
+    else if(f.paypalUrl){ btn.href=f.paypalUrl; }
+    else { btn.textContent='Kauf startet in Kürze'; btn.classList.add('off'); }
+  }).catch(function(){});
+})();
+</script>
 
 <section id="plaene"><div class="wrap">
   <h2>Free, TikTok, Twitch & Gamer</h2><p class="sub">Herunterladen und Testen ist kostenlos. Für jede Plattform gibt es ein eigenes Abo, für beide zusammen das günstigere Bundle – monatlich kündbar.</p>
