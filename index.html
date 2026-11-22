@@ -217,7 +217,7 @@
 </div></section>
 
 <section id="konsole" class="kon-sec"><div class="wrap">
-  <div class="kicker">Neu · Founder Edition</div>
+  <div class="kicker">Jetzt erhältlich · Verkaufsstart 22.11.2026</div>
   <h2>Die SeriousZocken <span>Konsole</span></h2>
   <p class="sub">Die Spielekonsole mit Kamera, die deinen Körper zum Controller macht – für Gaming, Livestreams und Lernspiele im Wohnzimmer. Blättere durch den Katalog.</p>
   <div class="kon-grid">
@@ -252,7 +252,7 @@
       <div class="pp-wrap" id="paypal-container-UJUFBN5MQRT7U" hidden></div>
       <a class="btn ppb" id="founder-buy" href="#" target="_blank" rel="noopener">Jetzt Founder werden – mit PayPal</a>
       <a class="pp-alt" id="founder-alt" href="#" target="_blank" rel="noopener" hidden>Checkout lädt nicht? Hier direkt über PayPal bezahlen</a>
-      <small>Preis inkl. Versand. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.<br>Crowdfunding-Start Frühjahr 2027 · Auslieferung geplant Mitte 2027. Abbildungen zeigen Renderings des Prototyps.</small>
+      <small>Preis inkl. Versand. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. <a href="konsole-bedingungen.html" style="color:#ffd3da">Kaufbedingungen &amp; Widerrufsrecht</a><br>Crowdfunding-Start Frühjahr 2027 · Auslieferung geplant Mitte 2027. Abbildungen zeigen Renderings des Prototyps.</small>
     </div>
   </div>
 </div></section>
@@ -272,8 +272,8 @@
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches) timer=setInterval(function(){ go(cur+1); },6000);
   window.addEventListener('resize',function(){ tr.scrollLeft=cur*tr.clientWidth; });
   mark();
-  // Restmenge + PayPal-Link aus founder.json (dort nach jedem Verkauf "verkauft" hochzählen)
-  fetch('founder.json?'+Date.now()).then(function(r){ return r.json(); }).then(function(f){
+  // Restmenge + PayPal-Link aus ads.json → "konsole" (gilt auch für den Reiter im Programm; nach jedem Verkauf "verkauft" hochzählen)
+  fetch('ads.json?'+Date.now()).then(function(r){ return r.json(); }).then(function(j){ var f=(j&&j.konsole)||{};
     var ges=f.gesamt||50, rest=Math.max(0,ges-(f.verkauft||0)), btn=document.getElementById('founder-buy');
     document.getElementById('founder-rest').textContent = rest ? (rest+' von '+ges+' frei') : 'Ausverkauft';
     document.getElementById('founder-bar').style.width=(rest/ges*100)+'%';
