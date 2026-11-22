@@ -217,7 +217,7 @@
 </div></section>
 
 <section id="konsole" class="kon-sec"><div class="wrap">
-  <div class="kicker">Jetzt erhältlich · Verkaufsstart 22.11.2026</div>
+  <div class="kicker">Jetzt vorbestellen · Founder Edition</div>
   <h2>Die SeriousZocken <span>Konsole</span></h2>
   <p class="sub">Die Spielekonsole mit Kamera, die deinen Körper zum Controller macht – für Gaming, Livestreams und Lernspiele im Wohnzimmer. Blättere durch den Katalog.</p>
   <div class="kon-grid">
@@ -249,10 +249,8 @@
         <li><b>Nummeriert und signiert</b> (Nr. 1–50) mit persönlicher Widmung</li>
       </ul>
       <div class="stock"><span id="founder-rest">50 von 50 frei</span><span class="bar"><i id="founder-bar"></i></span></div>
-      <div class="pp-wrap" id="paypal-container-UJUFBN5MQRT7U" hidden></div>
-      <a class="btn ppb" id="founder-buy" href="#" target="_blank" rel="noopener">Jetzt Founder werden – mit PayPal</a>
-      <a class="pp-alt" id="founder-alt" href="#" target="_blank" rel="noopener" hidden>Checkout lädt nicht? Hier direkt über PayPal bezahlen</a>
-      <small>Preis inkl. Versand. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. <a href="konsole-bedingungen.html" style="color:#ffd3da">Kaufbedingungen &amp; Widerrufsrecht</a><br>Crowdfunding-Start Frühjahr 2027 · Auslieferung geplant Mitte 2027. Abbildungen zeigen Renderings des Prototyps.</small>
+      <a class="btn ppb" id="founder-buy" href="#" target="_blank" rel="noopener"><span style="text-align:center">Jetzt Founder werden – mit <b style="font-style:italic;letter-spacing:-.02em;white-space:nowrap"><span style="color:#003087">Pay</span><span style="color:#009cde">Pal</span></b></span></a>
+      <small>Preis inkl. Versand. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. <a href="konsole-bedingungen.html" style="color:#ffd3da">Kaufbedingungen &amp; Widerrufsrecht</a><br>Vorbestellung · Auslieferung geplant im 1.–2. Quartal 2027. Abbildungen zeigen Renderings des Prototyps.</small>
     </div>
   </div>
 </div></section>
@@ -278,22 +276,7 @@
     document.getElementById('founder-rest').textContent = rest ? (rest+' von '+ges+' frei') : 'Ausverkauft';
     document.getElementById('founder-bar').style.width=(rest/ges*100)+'%';
     if(!rest){ btn.textContent='Alle 50 Founder-Konsolen sind vergeben'; btn.classList.add('off'); }
-    else if(f.paypalUrl){
-      btn.href=f.paypalUrl;
-      var box=document.getElementById('paypal-container-UJUFBN5MQRT7U'), alt=document.getElementById('founder-alt');
-      var sdk=document.createElement('script');
-      sdk.src='https://www.paypal.com/sdk/js?client-id=BAAdPAUbFrfGqf8rHg-NuEs7Og2uQ_egbD_qRXIgFw5osqdUv9rGtsOE2Uub71aQiEiTT4-6YiN9n09nNo&components=hosted-buttons&disable-funding=venmo&currency=EUR';
-      sdk.onload=function(){
-        box.hidden=false; btn.style.display='none';
-        var back=function(){ box.hidden=true; btn.style.display=''; };
-        try {
-          paypal.HostedButtons({ hostedButtonId: 'UJUFBN5MQRT7U' }).render('#paypal-container-UJUFBN5MQRT7U').then(function(){
-            alt.href=f.paypalUrl; alt.hidden=false;
-          }).catch(back);
-        } catch(e) { back(); }
-      };
-      document.head.appendChild(sdk);
-    }
+    else if(f.paypalUrl){ btn.href=f.paypalUrl; }   // kompakter Button → PayPal-Checkout im neuen Tab (eingebetteter Checkout war auf dem Handy zu groß)
     else { btn.textContent='Kauf startet in Kürze'; btn.classList.add('off'); }
   }).catch(function(){});
 })();
