@@ -6,7 +6,8 @@
     "Felder: kunde (nur zur Übersicht) · bis (letzter Tag JJJJ-MM-TT, danach automatisch wieder eigene Werbung) · bild (fertiges Bannerbild, ersetzt Logo und Texte: groß 680×152, klein 680×80) · logo · titel · text · farbe (#rrggbb) · weblink (true = Weblink gebucht, nur dann klickbar) · url (nur https) · knopf (Knopftext).",
     "Nicht vermietet: groß zeigt „Werbung – mich kann man mieten“, klein zeigt die eigene Werbung aus „eigen“.",
     "Bilder des Kunden nach website/assets/ legen und als https://seriousspawns.com/assets/<datei> eintragen.",
-    "Für alle Nutzer: WEBSITE-VEROEFFENTLICHEN.bat ausführen – sichtbar innerhalb einer Stunde, ohne Update. Im Entwicklermodus (START-DEV) gilt diese Datei sofort."
+    "Für alle Nutzer: WEBSITE-VEROEFFENTLICHEN.bat ausführen – sichtbar innerhalb einer Stunde, ohne Update. Im Entwicklermodus (START-DEV) gilt diese Datei sofort.",
+    "konsole = SeriousZocken Konsole (Reiter „Konsole“ im Programm + Bereich auf der Website): nach jedem Verkauf „verkauft“ um 1 erhöhen, dann WEBSITE-VEROEFFENTLICHEN.bat. Bei verkauft = gesamt zeigen Programm und Website automatisch „ausverkauft“."
   ],
   "eigen": {
     "klein": {
@@ -41,5 +42,12 @@
     "weblink": true,
     "url": "https://example.com",
     "knopf": "Ansehen"
+  },
+  "konsole": {
+    "gesamt": 50,
+    "verkauft": 0,
+    "preis": "999 €",
+    "paypalUrl": "https://www.paypal.com/ncp/payment/UJUFBN5MQRT7U",
+    "neuBis": "2026-11-29"
   }
 }
