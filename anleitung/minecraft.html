@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minecraft (Java) – Anleitung · SeriousSpawns</title>
+<meta name="description" content="So richtest du SeriousSpawns für Minecraft Java ein: eigener Server mit einem Klick, über 40 Klassiker-Spawns wie TNT-Regen, Mitspieler einladen und Hilfe bei Problemen.">
+<link rel="icon" href="../assets/favicon.png">
+<style>
+  @font-face { font-family:Bungee; src:url(../assets/bungee-latin-400-normal.ttf); font-display:swap }
+  @font-face { font-family:Chakra; src:url(../assets/chakra-petch-latin-700-normal.ttf); font-display:swap }
+  :root { --bg:#0b0b10; --panel:#14141c; --panel2:#191923; --line:#262634; --text:#ececf3; --mute:#9a9ab0; --red:#ff2d55; --cyan:#25f4ee; --ok:#3ddc84; --tw:#9146ff; --tw2:#bf94ff; --gold:#ffc61f; --blue:#3b8cff }
+  * { box-sizing:border-box }
+  html { scroll-behavior:smooth }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 "Segoe UI", system-ui, -apple-system, sans-serif }
+  a { color:var(--cyan) }
+  .wrap { max-width:980px; margin:0 auto; padding:0 20px }
+  nav { position:sticky; top:0; z-index:10; background:rgba(11,11,16,.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line) }
+  nav .wrap { display:flex; align-items:center; gap:14px; height:58px }
+  nav img { width:34px; height:34px; border-radius:9px }
+  nav b { font-family:Bungee, sans-serif; font-weight:400; font-size:17px } nav b span { color:var(--red) }
+  nav .grow { flex:1 } nav a.l { color:var(--mute); text-decoration:none; font-size:14px } nav a.l:hover { color:var(--text) }
+  header { padding:54px 0 30px; background:radial-gradient(600px 360px at 10% 10%, rgba(255,45,85,.2), transparent 70%), radial-gradient(520px 340px at 95% 90%, rgba(47,107,47,.55), transparent 70%) }
+  .kicker { font-family:Chakra, sans-serif; color:var(--cyan); letter-spacing:.14em; text-transform:uppercase; font-size:13px }
+  h1 { font-family:Bungee, sans-serif; font-weight:400; font-size:clamp(30px, 5vw, 50px); line-height:1.08; margin:8px 0 14px } h1 em { font-style:normal; color:var(--red) }
+  .lead { font-size:18px; color:#cfcfe0; max-width:720px; margin:0 }
+  h2 { font-family:Chakra, sans-serif; font-size:26px; margin:46px 0 6px; scroll-margin-top:70px } h2 .n { color:var(--red); margin-right:8px }
+  h3 { font-size:18px; margin:22px 0 6px }
+  .sub { color:var(--mute); margin:0 0 18px }
+  .toc { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px } .toc a { font-family:Chakra, sans-serif; font-size:13px; text-decoration:none; color:var(--text); border:1px solid var(--line); background:var(--panel); padding:6px 12px; border-radius:30px } .toc a:hover { border-color:var(--red) }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:14px 0 }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 } .grid2 .card, .grid3 .card { margin:0 } .grid3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px }
+  ol.steps { list-style:none; counter-reset:s; padding:0; margin:14px 0 }
+  ol.steps > li { counter-increment:s; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px 16px 64px; margin:10px 0; position:relative }
+  ol.steps > li::before { content:counter(s); position:absolute; left:18px; top:12px; font-family:Bungee, sans-serif; font-size:26px; color:var(--red) }
+  ol.steps > li > b:first-child { display:block; font-size:16.5px; margin-bottom:2px }
+  ul { padding-left:20px } li { margin:4px 0 }
+  .note { border-left:4px solid var(--cyan); background:rgba(37,244,238,.06); padding:12px 16px; border-radius:0 12px 12px 0; margin:14px 0 }
+  .warn { border-left-color:var(--gold); background:rgba(255,198,31,.07) }
+  .bad { border-left-color:var(--red); background:rgba(255,45,85,.07) }
+  .tag { font-family:Chakra, sans-serif; font-size:12px; border-radius:6px; padding:2px 8px; margin-left:4px; vertical-align:middle }
+  .t-pro { background:var(--red); color:#fff } .t-test { background:#2a2a38; color:var(--gold) } .t-new { background:var(--gold); color:#1a1400 }
+  code, kbd { font-family:Consolas, monospace; font-size:14px; background:#1e1e2a; border:1px solid var(--line); border-radius:6px; padding:1px 6px }
+  kbd { border-bottom-width:3px }
+  table { width:100%; border-collapse:collapse; font-size:15px } th, td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top } th { font-family:Chakra, sans-serif; color:var(--mute); font-size:13px; text-transform:uppercase; letter-spacing:.08em }
+  .elite { display:flex; gap:12px; flex-wrap:wrap } .elite div { flex:1; min-width:200px; border-radius:14px; padding:14px 16px; background:var(--panel2); border:1px solid var(--line) }
+  .e1 { box-shadow:inset 0 0 0 1px rgba(59,140,255,.6) } .e1 b { color:var(--blue) }
+  .e2 { box-shadow:inset 0 0 0 1px rgba(255,45,85,.6) } .e2 b { color:var(--red) }
+  .e3 { box-shadow:inset 0 0 0 1px rgba(255,198,31,.6) } .e3 b { color:var(--gold) }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 } .chips span { font-size:13.5px; border-radius:30px; padding:4px 11px; background:var(--panel2); border:1px solid var(--line) }
+  .chips.harm span { border-color:rgba(255,45,85,.45) } .chips.help span { border-color:rgba(61,220,132,.5) } .chips.mob span { border-color:rgba(255,198,31,.4) }
+  .koop { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; margin:18px 0 }
+  .koop .box { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px 16px; text-align:center }
+  .koop .box b { font-family:Chakra, sans-serif; font-size:17px } .koop .arrow { font-family:Bungee, sans-serif; color:var(--red); font-size:22px }
+  details { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px; margin:8px 0 } details[open] { border-color:#3a3a4c }
+  summary { cursor:pointer; font-weight:700 } details p, details ul { margin:8px 0 2px; color:#d6d6e4 }
+  footer { border-top:1px solid var(--line); padding:26px 0; color:var(--mute); font-size:14px; margin-top:60px } footer a { color:var(--mute) }
+  @media (max-width:760px) { .grid2, .grid3 { grid-template-columns:1fr } .koop { grid-template-columns:1fr } .koop .arrow { transform:rotate(90deg); justify-self:center } }
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <img src="../assets/logo.png" alt=""><b>Serious<span>Spawns</span></b><div class="grow"></div>
+  <a class="l" href="../index.html">Startseite</a><a class="l" href="#probleme">Hilfe</a>
+</div></nav>
+
+<header><div class="wrap">
+  <div class="kicker">Mod-Anleitung · Pro</div>
+  <h1>Minecraft <em>×</em> SeriousSpawns</h1>
+  <p class="lead">Deine Zuschauer lassen <b>TNT über deinem Kopf</b> regnen, schicken Creeper, Zombie-Horden, den Warden – oder retten dich mit Totem und Diamant-Rüstung. Mit Namen und Profilbild der Zuschauer. Und das Beste: Den passenden Server richtet SeriousSpawns <b>mit einem Klick</b> selbst ein.</p>
+  <div class="toc">
+    <a href="#voraussetzungen">1 · Voraussetzungen</a><a href="#einrichten">2 · Einrichten (1 Klick)</a><a href="#spielen">3 · Ins Spiel</a>
+    <a href="#spawns">4 · Spawns einrichten</a><a href="#modi">5 · Modi</a><a href="#mitspieler">6 · Mitspieler einladen</a>
+    <a href="#eigener">7 · Eigener Server</a><a href="#extras">8 · Grafik &amp; Controller</a><a href="#probleme">9 · Probleme lösen</a>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <div class="note warn"><b>Hinweis:</b> Die Minecraft-Mod ist in Entwicklung. Einzelne Fehler sind möglich. Wichtige Welten vorher sichern und Fehler bitte über „Problem melden“ in SeriousSpawns schicken – so wird die Mod für alle besser.</div>
+
+  <h2 id="voraussetzungen"><span class="n">1</span>Voraussetzungen</h2>
+  <div class="grid2">
+    <div class="card"><b>✔ SeriousSpawns</b> mit <span class="tag t-pro">Pro</span>-Abo<br><span style="color:var(--mute)">Der Reiter <b>Mods</b> ist in jedem Pro-Abo enthalten.</span></div>
+    <div class="card"><b>✔ Minecraft: Java Edition</b> auf dem PC<br><span style="color:var(--mute)">Egal ob aus dem Microsoft Store, dem Minecraft Launcher oder dem Xbox-App-Game-Pass – wichtig ist die <b>Java</b>-Version. Die Bedrock-Version (Windows-Edition, Konsole, Handy) wird nicht unterstützt.</span></div>
+    <div class="card"><b>✔ Minecraft einmal gestartet</b><br><span style="color:var(--mute)">Starte Minecraft Java einmal über den Launcher. Dabei lädt der Launcher das Java mit, das der Server braucht.</span></div>
+    <div class="card"><b>✔ Windows-PC mit Internet</b><br><span style="color:var(--mute)">Für den ersten Download des offiziellen Servers (ca. 60 MB) direkt von Mojang.</span></div>
+  </div>
+
+  <h2 id="einrichten"><span class="n">2</span>Einrichten – mit einem Klick</h2>
+  <p class="sub">Einmalig, dauert beim ersten Mal 1–3 Minuten.</p>
+  <ol class="steps">
+    <li><b>SeriousSpawns öffnen → Reiter „Mods“ → Kachel „Minecraft (Java)“</b>Dort auf <b>Aktivieren</b> drücken, falls sie noch nicht aktiv ist.</li>
+    <li><b>Deinen Minecraft-Namen eintragen</b>Feld „Dein Minecraft-Name“. Das ist dein <b>Java-Spielername</b> (steht im Launcher oben bzw. im Spiel über deinem Kopf) – nicht der Xbox-Gamertag. Java-Namen haben keine Leerzeichen.</li>
+    <li><b>„🧱 Server automatisch erstellen“ drücken</b>SeriousSpawns lädt den <b>offiziellen</b> Minecraft-Server in genau deiner Version, schaltet die Fernsteuerung (RCON) ein, installiert das SeriousSpawns-Datenpaket und startet den Server. Mit dem Klick stimmst du der <a href="https://aka.ms/MinecraftEULA" target="_blank" rel="noopener">Minecraft-EULA</a> zu.</li>
+    <li><b>Fertig, wenn alle drei Häkchen grün sind</b>✔ Server-Ordner gefunden · ✔ RCON an · ✔ SeriousSpawns-Datenpaket. Ab jetzt startet SeriousSpawns den Server von selbst, sobald du es öffnest.</li>
+  </ol>
+  <div class="note">Der Server läuft unsichtbar im Hintergrund und nur so lange, wie SeriousSpawns offen ist. Deine Welt bleibt erhalten (Ordner <code>%LOCALAPPDATA%\SeriousSpawns\Minecraft-Server</code>).</div>
+
+  <h2 id="spielen"><span class="n">3</span>Ins Spiel</h2>
+  <ol class="steps">
+    <li><b>Minecraft Java starten</b>Die gleiche Version wie beim Erstellen (normalerweise einfach die neueste).</li>
+    <li><b>Mehrspieler → Direktverbindung</b>Als Serveradresse <code>localhost</code> eintragen und <b>Server betreten</b>.</li>
+    <li><b>Test-Spawn schicken</b>In SeriousSpawns „Verbindung testen“ drücken oder im Testbereich einen Spawn auslösen – Test-Spawns tragen den Namen <b>@seriousspawns.com</b>.</li>
+  </ol>
+  <div class="note">Tipp: Speichere den Server in Minecraft unter <b>Server hinzufügen</b> (Adresse <code>localhost</code>) – dann reicht künftig ein Doppelklick.</div>
+
+  <h2 id="spawns"><span class="n">4</span>Spawns einrichten</h2>
+  <p class="sub">Wie bei allen Mods: Geschenke, Likes, Follows oder Chat-Befehle legen fest, was im Spiel passiert.</p>
+  <p>Unter <b>⚙ Trigger &amp; Overlay</b> ordnest du jedem Geschenk einen Spawn zu. Ein paar Vorschläge sind schon eingestellt (z. B. Donut → TNT über dem Kopf, Parfüm → TNT-Regen, GG → Heilen). Spawns aus TikTok erscheinen <b>rot</b>, aus Twitch <b>lila</b> beschriftet – mit Name und Profilbild des Zuschauers über dem Gegner.</p>
+  <h3>Klassiker <span class="tag t-new">neu</span></h3>
+  <div class="chips harm"><span>TNT über dem Kopf</span><span>TNT-Regen (12)</span><span>TNT-Ring</span><span>Creeper</span><span>Geladener Creeper</span><span>Zombie-Horde (5)</span><span>Skelett-Schützen (3)</span><span>Spinnen (3)</span><span>Hexe</span><span>Silberfisch-Schwarm</span><span>Phantome (aus der Luft)</span><span>Plagegeister</span><span>Verwüster</span><span>Boss: Warden</span><span>Boss: Wither</span><span>Ghast</span><span>Blitzeinschlag</span><span>Amboss-Regen</span><span>Pfeilregen</span><span>Spinnennetz-Falle</span><span>Ab in die Luft!</span><span>Blind</span><span>Dunkelheit</span><span>Übelkeit</span><span>Schneckentempo</span><span>Heißhunger</span><span>Zufalls-Teleport</span><span>Nacht</span><span>Gewitter</span><span>Hühner-Regen</span></div>
+  <h3>Helfer</h3>
+  <div class="chips help"><span>Heilen + satt</span><span>Regeneration</span><span>Speed</span><span>Super-Sprung</span><span>Unverwundbar (10 s)</span><span>16 Steaks</span><span>Goldene Äpfel</span><span>Diamanten</span><span>Totem der Unsterblichkeit</span><span>Diamant-Rüstung</span><span>Eisengolem-Leibwächter</span><span>Tag</span><span>Sonnenschein</span><span>Alle Klassiker-Gegner weg</span></div>
+  <div class="note">TNT und Wurf-Spawns erscheinen immer <b>über</b> dir, fliegende Gegner nie im Boden. Der <b>Absturzschutz</b> („max. Mobs“, Standard 150) verhindert, dass zu viele Gegner auf einmal das Spiel ausbremsen.</div>
+
+  <h2 id="modi"><span class="n">5</span>Weitere Modi</h2>
+  <div class="grid2">
+    <div class="card"><b>🧪 Mutanten-Labor</b><br>Riesen-Zombie, Turbo-Skelett, unsichtbare Spinne, teilender Creeper, Mutanten-Welle – plus Gegenmittel.</div>
+    <div class="card"><b>📏 Größen-Roulette</b><br>Du winzig oder riesig, Gegner winzig oder riesig – für 20–25 Sekunden.</div>
+    <div class="card"><b>👑 Boss-Baukasten</b><br>Zuschauer bauen gemeinsam einen Boss: mehr Leben, Rüstung, Gefolge, Wut – und lassen ihn dann los.</div>
+    <div class="card"><b>🚀 Jetpack-Modus</b><br>Treibstoff schenken oder abzapfen, EMP, Fallschirm, Raketenstart.</div>
+    <div class="card"><b>😱 Get-Serious-Horror</b><br>30 Sekunden Dunkelheit, Geräusche und Schreckmomente.</div>
+    <div class="card"><b>🖼️ Profilbild-Block</b><br>Ein Block mit dem Profilbild des Zuschauers fällt vom Himmel – oder gleich ein ganzer Turm.</div>
+  </div>
+  <h3>Pyramiden-Krieg (2–4 Streamer) <span class="tag t-test">Beta</span></h3>
+  <p>Jeder Streamer verteidigt seine Pyramide, die Zuschauer greifen die Pyramiden der anderen an oder bauen Mauern und Schilde. Der Modus startet <b>erst</b>, wenn du „Pyramiden-Krieg starten“ drückst – bis dahin bleibt deine Welt eine ganz normale Map. „Pyramiden-Krieg beenden“ räumt wieder auf.</p>
+
+  <h2 id="mitspieler"><span class="n">6</span>Mitspieler einladen</h2>
+  <p class="sub">Normalerweise ist dein Server nur für dich (localhost). Unter „Mitspieler einladen“ kannst du das ändern – gilt ab dem nächsten Serverstart.</p>
+  <div class="grid2">
+    <div class="card"><b>🏠 Heimnetz</b><br>Für Leute im selben WLAN/LAN. Einstellung „Heimnetz“ wählen, Server neu starten, dann <b>„👥 Adresse für Mitspieler anzeigen“</b> – die Mitspieler geben diese Adresse (z. B. <code>192.168.178.20</code>) bei Direktverbindung ein. Windows fragt beim ersten Mal, ob Java ins Netzwerk darf: <b>Zulassen</b> (privates Netzwerk).</div>
+    <div class="card"><b>🌐 Internet</b><br>Für Freunde überall – ohne Router-Einstellungen, über den kostenlosen Dienst <b>playit.gg</b>. „🌐 playit.gg einrichten“ drücken: SeriousSpawns installiert und startet playit.gg und öffnet die Webseite. Dort einmal kostenlos anmelden, das Programm verknüpfen (Claim) und <b>Add Tunnel → Minecraft Java</b> wählen. Die angezeigte Adresse (z. B. <code>abc.joinmc.link</code>) bei „Internet-Adresse“ eintragen – die gibst du deinen Mitspielern.</div>
+  </div>
+  <div class="note warn">Die Spawns gehen immer an <b>deine</b> Figur (deinen eingetragenen Namen). Mitspieler sehen alles mit – und dürfen dir natürlich helfen.</div>
+
+  <h2 id="eigener"><span class="n">7</span>Eigenen Server nutzen (für Fortgeschrittene)</h2>
+  <p>Du hast schon einen Server (Vanilla, Paper oder Spigot, Java 1.20 bis 26.x)? Dann statt „Server automatisch erstellen“ auf <b>„Server-Ordner…“</b> drücken, den Ordner mit der <code>server.properties</code> wählen und <b>Installieren</b>. SeriousSpawns schaltet RCON ein und legt das Datenpaket in die Welt. Danach den Server einmal neu starten. Bei Servern auf einem anderen PC trägst du dessen Adresse bei „Server-Adresse“ ein; der RCON-Port (Standard 25575) muss erreichbar sein.</p>
+  <p>Bei „Minecraft-Version“ die passende Version wählen (wird beim automatischen Server selbst erkannt).</p>
+
+  <h2 id="extras"><span class="n">8</span>Grafik &amp; Controller</h2>
+  <div class="grid2">
+    <div class="card" id="grafik"><b>🧱 Grafikpaket „Serious Realism“</b> <span class="tag t-new">freiwillig</span><br>Realistischere Texturen für Gras, Stein, Holz, Ziegel und mehr – ohne Mod. Es wird <b>nur auf Wunsch</b> eingeschaltet: In der Minecraft-Kachel <b>„🧱 Grafikpaket einschalten“</b> drücken (Minecraft vorher schließen) – oder im Spiel <b>Optionen → Ressourcenpakete</b> → „Serious Realism“ nach rechts schieben. „Grafikpaket ausschalten“ macht alles wieder normal.</div>
+    <div class="card"><b>🎮 Controller-Paket</b><br>Minecraft Java mit Controller spielen – Xbox, PlayStation und viele andere, ohne Mod. Einstellung „Controller-Paket“ auf <b>An</b>; wirkt, solange Minecraft im Vordergrund ist. Empfindlichkeit und Vibration sind einstellbar.</div>
+  </div>
+
+    <div class="grid2" style="margin-top:14px">
+    <figure class="card" style="margin:0;padding:10px"><img src="../assets/mc-realism-haus.jpg" alt="Minecraft mit dem Grafikpaket Serious Realism" style="width:100%;border-radius:10px;display:block" loading="lazy"><figcaption style="color:var(--mute);font-size:14px;margin-top:6px">So sieht eine Welt mit „Serious Realism“ aus</figcaption></figure>
+    <figure class="card" style="margin:0;padding:10px"><img src="../assets/mc-realism-texturen.jpg" alt="Texturen aus Serious Realism" style="width:100%;border-radius:10px;display:block" loading="lazy"><figcaption style="color:var(--mute);font-size:14px;margin-top:6px">Einige der neuen Texturen im Überblick</figcaption></figure>
+  </div>
+
+  <h2 id="probleme"><span class="n">9</span>Probleme lösen</h2>
+  <details><summary>„Verbindung fehlgeschlagen“ bei localhost</summary><ul>
+    <li>Ist SeriousSpawns offen? Der Server läuft nur, solange SeriousSpawns läuft. Notfalls „▶ Server starten“ drücken.</li>
+    <li>Sind in der Kachel alle drei Häkchen grün? Wenn nicht: „Server automatisch erstellen“ noch einmal drücken.</li>
+    <li>Gleiche Version? Der Server hat die Version, die beim Erstellen installiert war. Hast du Minecraft inzwischen aktualisiert, einfach „Server automatisch erstellen“ erneut drücken – deine Welt bleibt erhalten.</li>
+    <li>Das Start-Protokoll steht in <code>ss-start.log</code> im Server-Ordner – bitte beim Fehlerbericht mitschicken.</li></ul></details>
+  <details><summary>„Kein Java gefunden“</summary><p>Starte Minecraft Java einmal ganz normal über den Launcher (bis ins Hauptmenü). Dabei lädt der Launcher sein Java herunter. Danach „▶ Server starten“.</p></details>
+  <details><summary>„You are not white-listed on this server“</summary><p>Bitte SeriousSpawns aktualisieren und „▶ Server starten“ drücken – die Freigabeliste wird dabei automatisch ausgeschaltet.</p></details>
+  <details><summary>„That player does not exist“ / Spawns kommen nicht bei mir an</summary><p>Bei „Dein Minecraft-Name“ steht nicht dein Java-Spielername. Trag den Namen ein, der im Spiel über deinem Kopf steht (ohne Leerzeichen, nicht der Xbox-Gamertag). Wenn der Name stimmt, bekommst du beim Betreten automatisch Admin-Rechte.</p></details>
+  <details><summary>„Verbindung testen“ meldet einen Fehler</summary><ul>
+    <li>Der Server muss laufen und du musst <b>im Spiel</b> sein.</li>
+    <li>Eigener Server: Steht in der <code>server.properties</code> <code>enable-rcon=true</code>? Nach dem Installieren den Server einmal neu starten.</li></ul></details>
+  <details><summary>Freunde kommen nicht auf meinen Server</summary><ul>
+    <li>Heimnetz: Seid ihr im selben WLAN? Hat Windows Java ins Netzwerk gelassen? (Windows-Firewall → „App durch die Firewall zulassen“ → Java „Privat“ anhaken)</li>
+    <li>Internet: Läuft playit.gg (Symbol unten rechts)? Ist der Tunnel „Minecraft Java“ angelegt und zeigt auf <code>127.0.0.1:25565</code>?</li>
+    <li>Nach dem Ändern von „Mitspieler einladen“ den Server einmal stoppen und starten.</li></ul></details>
+  <details><summary>Das Grafikpaket ist nicht zu sehen</summary><p>Es ist absichtlich erst einmal aus. Minecraft schließen und in der Kachel „🧱 Grafikpaket einschalten“ drücken – oder im Spiel <b>Optionen → Ressourcenpakete</b> öffnen und „Serious Realism“ nach rechts (aktiv) schieben. Steht es dort rot als „inkompatibel“, SeriousSpawns aktualisieren.</p></details>
+  <details><summary>Der Controller geht nicht</summary><ul>
+    <li>Ist Minecraft in SeriousSpawns als Spiel <b>aktiviert</b> und „Controller-Paket“ auf <b>An</b>?</li>
+    <li>Der Controller wirkt nur, solange das Minecraft-Fenster vorne ist (einmal ins Spiel klicken).</li>
+    <li>Unter der Kachel steht, ob ein Controller erkannt wurde. Steam kann Controller „festhalten“: Steam schließen oder dort Steam Input für Minecraft ausschalten.</li></ul></details>
+  <details><summary>Es spawnen zu viele Gegner / das Spiel ruckelt</summary><p>Senke „Absturzschutz: max. Mobs“ (z. B. auf 80). „Alle Klassiker-Gegner weg“ räumt sofort auf.</p></details>
+  <details><summary>Die Pyramiden sind plötzlich da</summary><p>Der Pyramiden-Krieg wurde gestartet. „Pyramiden-Krieg beenden“ drücken – danach ist die Welt wieder normal.</p></details>
+  <p style="margin-top:22px">Noch Fragen? Schreib uns: <a href="mailto:seriouszocking.games@gmail.com">seriouszocking.games@gmail.com</a></p>
+</main>
+
+<footer><div class="wrap">
+  © SeriousSpawns by SeriousZocking · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a> · <a href="../agb.html">AGB</a><br>
+  Minecraft ist eine Marke von Mojang Synergies AB / Microsoft. SeriousSpawns ist ein unabhängiges Fan-Projekt und steht in keiner Verbindung zu Mojang oder Microsoft. Der Server wird direkt von Mojang geladen; es gilt die Minecraft-EULA.
+</div></footer>
+</body>
+</html>
